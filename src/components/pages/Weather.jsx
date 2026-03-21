@@ -156,29 +156,32 @@ export default function Weather() {
   const [isHimachal, setIsHimachal] = useState(true);
 
   useEffect(() => {
-    if (weatherData && weatherData.current) {
-      let himachalCheck = true;
-      if (selectedLocation.admin1 !== undefined) {
-        himachalCheck =
-          selectedLocation.admin1 === "Himachal Pradesh" &&
-          selectedLocation.country === "India";
-      }
-      setIsHimachal(himachalCheck);
+  if (weatherData && weatherData.current) {
 
-      if (himachalCheck) {
-        const district =
-          DISTRICT_MAPPING[selectedLocation.name] || selectedLocation.name;
-        const risk = calculateCloudburstRisk(
-          weatherData,
-          weatherData.elevation || 1500,
-          district,
-        );
-        setCloudburstRisk(risk);
-      } else {
-        setCloudburstRisk(null);
-      }
+    const himachalCheck =
+      selectedLocation.country === "India" &&
+      selectedLocation.admin1 &&
+      selectedLocation.admin1.toLowerCase().includes("himachal");
+
+    setIsHimachal(himachalCheck);
+
+    if (!himachalCheck) {
+      setCloudburstRisk(null);
+      return;
     }
-  }, [weatherData, selectedLocation]);
+
+    const district =
+      DISTRICT_MAPPING[selectedLocation.name] || selectedLocation.name;
+
+    const risk = calculateCloudburstRisk(
+      weatherData,
+      weatherData.elevation || 1500,
+      district
+    );
+
+    setCloudburstRisk(risk);
+  }
+}, [weatherData, selectedLocation]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -196,8 +199,8 @@ export default function Weather() {
           name: result.name,
           lat: result.latitude,
           lon: result.longitude,
-          admin1: result.admin1,
-          country: result.country,
+          admin1: result.admin1 || "",
+          country: result.country||"",
         });
         setSearchInput("");
       } else {
@@ -594,7 +597,7 @@ export default function Weather() {
                                 UV Index
                               </p>
                               <h6 className="fw-bold mb-0 text-dark">
-                                {Math.round(weatherData.current.uv_index)}
+                                {Math.round(weatherData.daily.uv_index_max[0])}
                               </h6>
                             </div>
                           </div>

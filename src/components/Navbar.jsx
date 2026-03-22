@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import {
   Search,
   MapPin,
@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const NAV_ITEMS = [
   {
@@ -223,10 +223,16 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
 
-  // State for Desktop Dropdown
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  // Handle scroll effect for shadow and size
+  const navRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  }, [location]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -235,14 +241,29 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
+  // NEW: Handle clicks outside the navbar to close dropdown
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+// Prevent background scroll
+  useEffect(() => {
+    document.body.style.overflow = (mobileMenuOpen || activeDropdown) ? "hidden" : "unset";
+
+    return () => {
       document.body.style.overflow = "unset";
-    }
-  }, [mobileMenuOpen]);
+    };
+  }, [mobileMenuOpen, activeDropdown]);
+
+  const toggleDropdown = (title) => {
+    setActiveDropdown(activeDropdown === title ? null : title);
+  };
 
   const toggleMobileSubmenu = (title) => {
     setActiveMobileMenu(activeMobileMenu === title ? null : title);
@@ -251,6 +272,7 @@ const Navbar = () => {
   return (
     <>
       <header
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 font-sans ${
           isScrolled
             ? "bg-white shadow-md py-3"
@@ -276,18 +298,16 @@ const Navbar = () => {
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-4">
               {NAV_ITEMS.map((item) => (
                 <div
-                  key={item.title}
-                  className="relative h-full"
-                  onMouseEnter={() => setActiveDropdown(item.title)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  key={item.title} className="relative h-full"
                 >
                   <div className="flex items-center h-full pt-1 pb-1">
                     <button
+                      onClick={() => toggleDropdown(item.title)}
                       className={clsx(
-                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-default",
+                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full",
                         activeDropdown === item.title
                           ? "bg-gray-50 text-[#FF5A2A]"
-                          : "hover:text-[#FF5A2A]",
+                          : "hover:text-[#FF5A2A]"
                       )}
                     >
                       {item.title}
@@ -304,23 +324,11 @@ const Navbar = () => {
             </nav>
 
             <div className="hidden lg:flex items-center space-x-4 ml-4">
-              <button 
-                onClick={() => {
-                  if (window.location.pathname !== "/") {
-                    window.location.href = "/#interactive-map";
-                  } else {
-                    const el = document.getElementById("interactive-map");
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }
-                  }
-                }}
-                className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-2 rounded-full hover:bg-gray-50/80 group flex items-center justify-center">
-                <img src="/hp-logo.png" alt="HP Logo" className="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
-              </button>
               <button className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-2.5 rounded-full hover:bg-gray-50/80 group">
                 <Search className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </button>
+              <button className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-2.5 rounded-full hover:bg-gray-50/80 group">
+                <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
 
@@ -349,13 +357,8 @@ const Navbar = () => {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="w-full max-w-6xl mt-0 pointer-events-auto relative"
-                onMouseEnter={() => setActiveDropdown(activeDropdown)}
-                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {/* Bridge to prevent hover gap issues */}
-                <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent -z-10"></div>
-
-                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden max-h-[calc(100vh-7rem)] overflow-y-auto">
                   {NAV_ITEMS.map((item) => {
                     if (item.title !== activeDropdown) return null;
                     const hasCards =
@@ -549,23 +552,8 @@ const Navbar = () => {
         {/* Mobile Bottom Actions */}
         <div className="p-5 border-t border-gray-100 bg-gray-50">
           <div className="flex justify-center gap-8 text-[#002060]">
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (window.location.pathname !== "/") {
-                  window.location.href = "/#interactive-map";
-                } else {
-                  setTimeout(() => {
-                    const el = document.getElementById("interactive-map");
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }
-                  }, 100);
-                }
-              }}
-              className="flex flex-col items-center gap-1 p-2 hover:text-[#FF5A2A] transition-colors group">
-              <img src="/hp-logo.png" alt="HP Logo" className="w-9 h-9 object-contain group-hover:-translate-y-1 transition-transform" />
+            <button className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">
+              <MapPin className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
               <span className="text-xs font-semibold">Locations</span>
             </button>
             <button className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">

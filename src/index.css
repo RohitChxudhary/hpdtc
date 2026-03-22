@@ -118,3 +118,18 @@ html { scroll-behavior: smooth; }
 a {
   text-decoration: none !important;
 }
+
+/* SeasonalGuide — glass panel scrollbar (Chrome/Safari) */
+.seasonal-glass-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.seasonal-glass-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.seasonal-glass-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 99px;
+}
+.seasonal-glass-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}

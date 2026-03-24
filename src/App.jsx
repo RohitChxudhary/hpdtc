@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Story from './components/Story';
+import HorizontalCategories from './components/HorizontalCategories';
 import PlacesToGo from './components/PlacesToGo';
 import ThingsToDo from './components/ThingsToDo';
 import SeasonalGuide from './components/SeasonalGuide';
@@ -38,6 +39,7 @@ export default function App() {
           element={
             <main>
               <Hero />
+              <HorizontalCategories />
               <Story />
               <PlacesToGo />
               <ThingsToDo />

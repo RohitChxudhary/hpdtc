@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect } from "react";
 import {
   Search,
   MapPin,
@@ -7,10 +7,11 @@ import {
   ChevronDown,
   ChevronRight,
   ArrowRight,
+  Phone,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NAV_ITEMS = [
   {
@@ -222,17 +223,12 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  // State for Desktop Dropdown
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const navRef = useRef(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    setActiveDropdown(null);
-    setMobileMenuOpen(false);
-  }, [location]);
-
+  // Handle scroll effect for shadow and size
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -241,29 +237,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // NEW: Handle clicks outside the navbar to close dropdown
+  // Prevent background scroll when mobile menu is open or search is open
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-// Prevent background scroll
-  useEffect(() => {
-    document.body.style.overflow = (mobileMenuOpen || activeDropdown) ? "hidden" : "unset";
-
-    return () => {
+    if (mobileMenuOpen || isSearchOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
       document.body.style.overflow = "unset";
-    };
-  }, [mobileMenuOpen, activeDropdown]);
-
-  const toggleDropdown = (title) => {
-    setActiveDropdown(activeDropdown === title ? null : title);
-  };
+    }
+  }, [mobileMenuOpen, isSearchOpen]);
 
   const toggleMobileSubmenu = (title) => {
     setActiveMobileMenu(activeMobileMenu === title ? null : title);
@@ -272,11 +253,10 @@ const Navbar = () => {
   return (
     <>
       <header
-        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 font-sans ${
           isScrolled
-            ? "bg-white shadow-md py-3"
-            : "bg-white/95 backdrop-blur-sm shadow-sm py-4"
+            ? "bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-100"
+            : "bg-white/90 backdrop-blur-md shadow-sm py-3"
         }`}
         style={{ color: "#002060" }}
       >
@@ -285,12 +265,12 @@ const Navbar = () => {
             <Link
               to="/"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex-shrink-0 cursor-pointer flex items-center gap-2"
+              className="flex-shrink-0 cursor-pointer flex items-center gap-2 group"
             >
-              <div className="w-10 h-10 rounded-full bg-[#002060] flex items-center justify-center">
-                <span className="text-white font-bold text-xl">HP</span>
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#002060] to-[#003B99] shadow-md flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
+                <span className="text-white font-bold text-lg">HP</span>
               </div>
-              <span className="font-bold text-xl hidden sm:block tracking-tight text-[#002060]">
+              <span className="font-extrabold text-[1.3rem] hidden sm:block tracking-tight text-[#002060] drop-shadow-sm group-hover:text-[#FF5A2A] transition-colors duration-300">
                 HPTDC
               </span>
             </Link>
@@ -298,16 +278,18 @@ const Navbar = () => {
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-4">
               {NAV_ITEMS.map((item) => (
                 <div
-                  key={item.title} className="relative h-full"
+                  key={item.title}
+                  className="relative h-full"
+                  onMouseEnter={() => setActiveDropdown(item.title)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <div className="flex items-center h-full pt-1 pb-1">
+                  <div className="flex items-center h-full pt-0.5 pb-0.5">
                     <button
-                      onClick={() => toggleDropdown(item.title)}
                       className={clsx(
-                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full",
+                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-default",
                         activeDropdown === item.title
                           ? "bg-gray-50 text-[#FF5A2A]"
-                          : "hover:text-[#FF5A2A]"
+                          : "hover:text-[#FF5A2A]",
                       )}
                     >
                       {item.title}
@@ -323,21 +305,52 @@ const Navbar = () => {
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center space-x-4 ml-4">
-              <button className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-2.5 rounded-full hover:bg-gray-50/80 group">
-                <Search className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            <div className="hidden lg:flex items-center space-x-5 xl:space-x-6 ml-4">
+              <a 
+                href="tel:112"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-red-500 text-white px-3.5 py-1.5 rounded-full font-bold shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_20px_rgba(220,38,38,0.8)] transform hover:-translate-y-0.5 transition-all"
+              >
+                <Phone className="w-3.5 h-3.5 fill-white animate-pulse" />
+                <span className="text-sm tracking-widest">SOS</span>
+              </a>
+              <button 
+                onClick={() => {
+                  if (window.location.pathname !== "/") {
+                    window.location.href = "/#interactive-map";
+                  } else {
+                    const el = document.getElementById("interactive-map");
+                    if (el) {
+                      const y = el.getBoundingClientRect().top + window.scrollY - 60;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                  }
+                }}
+                className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-1.5 rounded-full hover:bg-gray-50/90 group flex items-center justify-center">
+                <img src="/hp-logo.png" alt="HP Logo" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform drop-shadow-sm" />
               </button>
-              <button className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-2.5 rounded-full hover:bg-gray-50/80 group">
-                <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <button 
+                onClick={() => setIsSearchOpen(true)}
+                className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-1.5 rounded-full hover:bg-gray-50/90 group"
+              >
+                <Search className="w-5 h-5 group-hover:scale-110 transition-transform drop-shadow-sm" />
               </button>
             </div>
 
-            <div className="flex lg:hidden items-center space-x-2">
-              <button className="text-[#002060] p-2 hover:bg-gray-50 rounded-full transition-colors">
+            <div className="flex lg:hidden items-center space-x-4">
+              <a 
+                href="tel:112"
+                className="flex items-center justify-center bg-gradient-to-r from-red-600 to-red-500 text-white w-8 h-8 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.4)] animate-pulse"
+              >
+                <Phone className="w-4 h-4 fill-white flex-shrink-0" />
+              </a>
+              <button 
+                onClick={() => setIsSearchOpen(true)}
+                className="text-[#002060] p-1.5 hover:bg-gray-50 rounded-full transition-colors"
+                >
                 <Search className="w-5 h-5" />
               </button>
               <button
-                className="text-[#002060] p-2 hover:bg-gray-50 rounded-full transition-colors focus:outline-none"
+                className="text-[#002060] p-1.5 hover:bg-gray-50 rounded-full transition-colors focus:outline-none"
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <Menu className="w-6 h-6" />
@@ -357,8 +370,13 @@ const Navbar = () => {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="w-full max-w-6xl mt-0 pointer-events-auto relative"
+                onMouseEnter={() => setActiveDropdown(activeDropdown)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden max-h-[calc(100vh-7rem)] overflow-y-auto">
+                {/* Bridge to prevent hover gap issues */}
+                <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent -z-10"></div>
+
+                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden">
                   {NAV_ITEMS.map((item) => {
                     if (item.title !== activeDropdown) return null;
                     const hasCards =
@@ -474,6 +492,57 @@ const Navbar = () => {
         </div>
       </header>
 
+      {/* Search Overlay */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md flex items-start justify-center pt-32 px-4"
+          >
+            <div className="w-full max-w-4xl relative">
+              <button
+                onClick={() => setIsSearchOpen(false)}
+                className="absolute -top-16 right-0 text-[#002060] hover:text-[#FF5A2A] transition-colors p-3 rounded-full hover:bg-gray-100/50"
+              >
+                <X className="w-8 h-8" />
+              </button>
+              <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="relative"
+              >
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-8 h-8 text-[#FF5A2A]" />
+                <input
+                  type="text"
+                  placeholder="Search for destinations, hotels, experiences..."
+                  className="w-full bg-white border-2 border-[#002060]/10 rounded-full py-6 pl-20 pr-8 text-xl focus:outline-none focus:border-[#FF5A2A] focus:ring-4 focus:ring-[#FF5A2A]/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] transition-all placeholder:text-gray-400 text-[#002060] font-medium"
+                  autoFocus
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="mt-8 text-center"
+              >
+                <p className="text-gray-500 font-medium mb-4">Try searching for:</p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {["Shimla", "Manali Stays", "Spiti Valley", "Hotel Booking", "Treks"].map((term) => (
+                    <button key={term} className="px-5 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-[#002060] hover:border-[#FF5A2A] hover:text-[#FF5A2A] hover:bg-orange-50 transition-all shadow-sm font-semibold">
+                      {term}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 bg-gray-900/40 backdrop-blur-[2px] z-[60] lg:hidden transition-all duration-400 ${
@@ -551,12 +620,32 @@ const Navbar = () => {
 
         {/* Mobile Bottom Actions */}
         <div className="p-5 border-t border-gray-100 bg-gray-50">
-          <div className="flex justify-center gap-8 text-[#002060]">
-            <button className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">
-              <MapPin className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+          <div className="flex justify-center gap-12 text-[#002060]">
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (window.location.pathname !== "/") {
+                  window.location.href = "/#interactive-map";
+                } else {
+                  setTimeout(() => {
+                    const el = document.getElementById("interactive-map");
+                    if (el) {
+                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                  }, 100);
+                }
+              }}
+              className="flex flex-col items-center gap-1 p-2 hover:text-[#FF5A2A] transition-colors group">
+              <img src="/hp-logo.png" alt="HP Logo" className="w-9 h-9 object-contain group-hover:-translate-y-1 transition-transform" />
               <span className="text-xs font-semibold">Locations</span>
             </button>
-            <button className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setIsSearchOpen(true);
+              }}
+              className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">
               <Search className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
               <span className="text-xs font-semibold">Search</span>
             </button>

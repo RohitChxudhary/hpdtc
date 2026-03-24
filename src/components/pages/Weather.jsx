@@ -273,7 +273,7 @@ export default function Weather() {
 
   return (
     <div
-      className="min-vh-100 position-relative pt-5"
+      className="min-vh-100 position-relative pt-5 pb-5"
       style={{ backgroundColor: "#f8fafc" }}
     >
       {/* Background decoration */}
@@ -288,7 +288,7 @@ export default function Weather() {
         />
       </div>
 
-      <div className="container position-relative z-10 pt-5 mt-5">
+      <div className="container position-relative z-10 pt-5 mt-5 pb-5 mb-5">
         <div className="text-center mb-5">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}

@@ -439,7 +439,9 @@ const Navbar = () => {
                                                         ? "/local-taxis"
                                                         : link.name === "Bus Booking"
                                                           ? "/bus-booking"
-                                                          : "#"
+                                                          : link.name === "Conference"
+                                                            ? "/conference"
+                                                            : "#"
                                       }
                                       className="relative block p-4 rounded-2xl !no-underline border-2 border-gray-400 bg-white transition-all duration-300 ease-out group/link hover:-translate-y-[4px] hover:scale-[1.03] hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.50)] hover:border-[#1E3A8A]"
                                     >

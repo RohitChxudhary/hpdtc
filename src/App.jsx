@@ -26,6 +26,7 @@ import Access from "./components/pages/Access";
 import LocalTaxis from "./components/pages/LocalTaxis";
 import Weather from "./components/pages/Weather";
 import BusBooking from "./components/pages/BusBooking";
+import Conference from "./components/pages/Conference";
 
 export default function App() {
   return (
@@ -64,6 +65,7 @@ export default function App() {
         <Route path="/local-taxis" element={<LocalTaxis />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/bus-booking" element={<BusBooking />} />
+        <Route path="/conference" element={<Conference />} />
       </Routes>
 
       <Footer />

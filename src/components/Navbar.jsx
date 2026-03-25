@@ -227,6 +227,19 @@ const Navbar = () => {
 
   // State for Desktop Dropdown
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const navRef = React.useRef(null);
+
+  // Handle clicks outside the navbar to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Allow clicking inside to not close the menu, but outside closes it
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Handle scroll effect for shadow and size
   useEffect(() => {
@@ -237,14 +250,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open or search is open
+  // Prevent background scroll when mobile menu, search, or desktop mega menu is open
   useEffect(() => {
-    if (mobileMenuOpen || isSearchOpen) {
+    if (mobileMenuOpen || isSearchOpen || activeDropdown) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [mobileMenuOpen, isSearchOpen]);
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen, isSearchOpen, activeDropdown]);
 
   const toggleMobileSubmenu = (title) => {
     setActiveMobileMenu(activeMobileMenu === title ? null : title);
@@ -253,6 +269,7 @@ const Navbar = () => {
   return (
     <>
       <header
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 font-sans ${
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-100"
@@ -280,15 +297,14 @@ const Navbar = () => {
                 <div
                   key={item.title}
                   className="relative h-full"
-                  onMouseEnter={() => setActiveDropdown(item.title)}
-                  onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <div className="flex items-center h-full pt-0.5 pb-0.5">
                     <button
+                      onClick={() => setActiveDropdown(activeDropdown === item.title ? null : item.title)}
                       className={clsx(
-                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-default",
+                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-pointer",
                         activeDropdown === item.title
-                          ? "bg-gray-50 text-[#FF5A2A]"
+                          ? "text-[#FF5A2A]"
                           : "hover:text-[#FF5A2A]",
                       )}
                     >
@@ -370,13 +386,11 @@ const Navbar = () => {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="w-full max-w-6xl mt-0 pointer-events-auto relative"
-                onMouseEnter={() => setActiveDropdown(activeDropdown)}
-                onMouseLeave={() => setActiveDropdown(null)}
               >
                 {/* Bridge to prevent hover gap issues */}
                 <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent -z-10"></div>
 
-                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden max-h-[calc(100vh-5rem)] overflow-y-auto">
                   {NAV_ITEMS.map((item) => {
                     if (item.title !== activeDropdown) return null;
                     const hasCards =

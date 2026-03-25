@@ -30,6 +30,16 @@ body {
   overflow-x: hidden;
 }
 
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
 h1, h2, h3, h4, h5, h6, .font-serif {
   font-family: var(--font-serif);
 }
@@ -61,8 +71,11 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   color: white;
 }
 
-/* Smooth scrolling */
-html { scroll-behavior: smooth; }
+/* Smooth scrolling and prevent scrollbar layout shift */
+html { 
+  scroll-behavior: smooth; 
+  scrollbar-gutter: stable;
+}
 
 /* Hide scrollbar for horizontal scroll areas */
 .no-scrollbar::-webkit-scrollbar { display: none; }

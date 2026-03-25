@@ -92,7 +92,7 @@ export default function VoiceAssistant() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="position-fixed bottom-0 end-0 m-4 z-3 bg-white rounded-4 shadow-lg border-0 overflow-hidden d-flex flex-column"
+            className="position-fixed bottom-0 end-0 m-4 z-25 bg-white rounded-4 shadow-lg border-0 overflow-hidden d-flex flex-column"
             style={{ width: '350px', borderTop: '4px solid var(--primary)' }}
           >
             {/* Header */}

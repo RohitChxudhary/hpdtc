@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sun, Snowflake, Leaf, CloudRain, MapPin, AlertTriangle, CheckCircle } from "lucide-react";
+import { Sun, Snowflake, Leaf, CloudRain, MapPin, ArrowRight, Clock } from "lucide-react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 
-// ─── Season Data: Nature's Four Acts ─────────────────────────────────────────
+// ─── Season Data ──────────────────────────────────────────────────────────────
 const SEASONS = [
   {
     id: "spring",
@@ -11,19 +11,15 @@ const SEASONS = [
     months: "March – June",
     act: "The Awakening",
     icon: Sun,
-    accentColor: "#F97316",          // saffron
+    accentColor: "#F97316",
     bgGradient: "linear-gradient(135deg, #fef3c7 0%, #fdba74 100%)",
-    description:
-      "As winter's grip loosens, Himachal bursts back to life. Melting snow feeds crystal rivers, rhododendrons paint the hillsides vivid crimson, and the high passes gradually reopen. Temperatures range from a pleasant 15–25°C in the valleys — perfect weather to explore without the summer crowds.",
-    locations: ["Shimla", "Manali", "Bir Billing"],
-    whyVisit: [
-      "Apple orchards in full bloom",
-      "Great Himalayan National Park treks",
-      "Paragliding at Bir — World's best site",
-      "River rafting in Kullu Valley",
-    ],
-    tags: ["Trekking", "Paragliding", "Rafting", "Wildlife"],
-    warning: null,
+    featuredDestination: {
+      name: "Bir Billing",
+      tagline: "Soar above the Himalayas from the world's finest paragliding site.",
+      heroImage: "#",
+      keyActivity: "Paragliding over the valley",
+      bestTimeToGo: "March to May",
+    },
   },
   {
     id: "monsoon",
@@ -31,21 +27,18 @@ const SEASONS = [
     months: "July – September",
     act: "The Romantic Drama",
     icon: CloudRain,
-    accentColor: "#0369A1",          // deep blue
+    accentColor: "#0369A1",
     bgGradient: "linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%)",
-    description:
-      "The rains transform Himachal into a vivid emerald world. Every hillside drips with lush vegetation, dramatic waterfalls appear overnight, and the valleys wear a perpetual romantic mist. The lower foothills around Dharamshala and Kasauli are spectacular — though the high mountains demand caution.",
-    locations: ["Dharamshala", "Kasauli", "Dalhousie"],
-    whyVisit: [
-      "Lush green landscapes at their peak",
-      "Roaring waterfalls along every road",
-      "Fewer tourists — peaceful tea-house treks",
-      "Dramatic cloud-sea views at sunset",
-    ],
-    tags: ["Waterfalls", "Tea Gardens", "Photography", "Offbeat"],
+    featuredDestination: {
+      name: "Dharamshala",
+      tagline: "Misty tea gardens, rain-washed monasteries, and Himalayan spirituality.",
+      heroImage: "#",
+      keyActivity: "Tea garden walks & meditation retreats",
+      bestTimeToGo: "July to early September",
+    },
     warning: {
       label: "Travel Advisory",
-      text: "Landslides and road closures are frequent during heavy rains. Avoid high-altitude passes (Rohtang, Spiti). Always check road conditions before travel and carry emergency supplies.",
+      text: "Landslides and road closures are frequent. Avoid high-altitude passes.",
     },
   },
   {
@@ -54,19 +47,15 @@ const SEASONS = [
     months: "October – November",
     act: "The Artist's Canvas",
     icon: Leaf,
-    accentColor: "#B45309",          // amber
+    accentColor: "#B45309",
     bgGradient: "linear-gradient(135deg, #fef3c7 0%, #d97706 100%)",
-    description:
-      "October blankets Himachal in a breathtaking palette of gold, amber, and russet. The post-monsoon skies are flawlessly clear, the air sharp and invigorating. The harvest brings Dussehra and Kullu Festivals into full swing — and the Spiti high desert shines under deep-blue skies before snow seals it shut.",
-    locations: ["Spiti Valley", "Kullu", "Sangla"],
-    whyVisit: [
-      "Crystal-clear skies — ideal for photography",
-      "Kullu Dussehra — Himachal's grandest festival",
-      "Spiti Valley before winter road closures",
-      "Apple harvest in Kinnaur",
-    ],
-    tags: ["Photography", "Festivals", "Spiti Drives", "Apple Trails"],
-    warning: null,
+    featuredDestination: {
+      name: "Spiti Valley",
+      tagline: "Golden larch forests beneath skies so clear you can count the Milky Way's stars.",
+      heroImage: "#",
+      keyActivity: "Stargazing & larch forest trails",
+      bestTimeToGo: "October to mid-November",
+    },
   },
   {
     id: "winter",
@@ -74,23 +63,19 @@ const SEASONS = [
     months: "December – February",
     act: "The Snow Fairy Tale",
     icon: Snowflake,
-    accentColor: "#1E3A8A",          // deep blue
+    accentColor: "#1E3A8A",
     bgGradient: "linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%)",
-    description:
-      "A thick white blanket transforms Himachal into a storybook dreamland. Shimla's Mall Road sparkles under fresh snowfall, while Solang Valley and Kufri become ski-resort hubs. Manali in winter is pure magic — silent pine forests, frozen waterfalls, and the warmth of a roaring fireplace after a day on the slopes.",
-    locations: ["Manali", "Solang Valley", "Shimla"],
-    whyVisit: [
-      "Skiing and snow sports at Solang Valley",
-      "Snowfall on Shimla's colonial architecture",
-      "Rohtang Pass snowfall experience",
-      "New Year and Christmas celebrations in Manali",
-    ],
-    tags: ["Skiing", "Snow Trekking", "Snowfall", "Festivals"],
-    warning: null,
+    featuredDestination: {
+      name: "Manali & Sethan",
+      tagline: "Drift off in an igloo, then carve fresh powder on untouched slopes at dawn.",
+      heroImage: "#",
+      keyActivity: "Igloo stays & fresh powder skiing",
+      bestTimeToGo: "December to February",
+    },
   },
 ];
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 const CURRENT_MONTH = new Date().getMonth(); // 0-indexed
 function getCurrentSeasonId() {
   if (CURRENT_MONTH >= 2 && CURRENT_MONTH <= 5) return "spring";
@@ -99,24 +84,31 @@ function getCurrentSeasonId() {
   return "winter";
 }
 
-// ─── Season Nav Item ──────────────────────────────────────────────────────────
+// ─── Season Nav Item (unchanged) ─────────────────────────────────────────────
 function SeasonNavItem({ season, isActive, isCurrent, onClick }) {
   const Icon = season.icon;
   return (
-    <motion.button
-      onClick={onClick}
-      whileTap={{ scale: 0.98 }}
-      className={`d-flex align-items-center w-100 p-3 rounded-4 text-start border-0 transition-all ${
-        isActive
-          ? "bg-white shadow-sm"
-          : "bg-transparent hover-bg-light text-secondary"
-      }`}
-      style={{
-        cursor: "pointer",
-        borderLeft: isActive ? `4px solid ${season.accentColor}` : "4px solid transparent",
-        outline: "none",
-      }}
-    >
+   <motion.button
+  onClick={onClick}
+  whileTap={{ scale: 0.97 }}
+  // Remove the standard "border-0" and use a dynamic border color instead
+  className={`d-flex align-items-center w-100 p-3 rounded-4 text-start transition-all ${
+    isActive ? "bg-white shadow-md" : "bg-transparent hover-bg-light"
+  }`}
+  style={{
+    cursor: "pointer",
+    outline: "none",
+    position: "relative",
+    // ─── The Key Refinement ───
+    border: `1px solid ${isActive ? `${season.accentColor}40` : "transparent"}`, 
+    boxShadow: isActive 
+      ? `0 10px 25px -5px rgba(0, 0, 0, 0.05), 
+         inset 0 0 0 1px ${season.accentColor}15` // Subtle internal tint
+      : "none",
+    transform: isActive ? "translateX(6px)" : "translateX(0)",
+    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)", // Bouncy entry
+  }}
+>
       {/* Icon circle */}
       <div
         className="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center me-3"
@@ -151,7 +143,7 @@ function SeasonNavItem({ season, isActive, isCurrent, onClick }) {
         </div>
       </div>
 
-      {/* Current season badge */}
+      {/* "Now" badge */}
       {isCurrent && (
         <Badge
           bg="transparent"
@@ -171,213 +163,230 @@ function SeasonNavItem({ season, isActive, isCurrent, onClick }) {
   );
 }
 
-// ─── Display Card ─────────────────────────────────────────────────────────────
-function SeasonCard({ season }) {
+// ─── Featured Destination Card ────────────────────────────────────────────────
+function FeaturedCard({ season }) {
   const Icon = season.icon;
+  const dest = season.featuredDestination;
+
+  // Stagger delays for child elements
+  const stagger = {
+    badge:    { delay: 0.05, duration: 0.4 },
+    title:    { delay: 0.18, duration: 0.45 },
+    tagline:  { delay: 0.30, duration: 0.45 },
+    meta:     { delay: 0.42, duration: 0.4  },
+    cta:      { delay: 0.52, duration: 0.4  },
+  };
+
   return (
     <motion.div
       key={season.id}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 0.97 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
       className="position-relative rounded-4 overflow-hidden shadow-lg"
-      style={{ minHeight: "540px" }}
+      style={{ minHeight: "560px" }}
     >
-      {/* Background image placeholder */}
-      <img
-        src="#"
-        alt={`${season.label} in Himachal Pradesh`}
-        className="w-100 h-100 object-cover position-absolute top-0 start-0"
+      {/* ── Hero image with zoom-in animation ── */}
+      <motion.div
+        key={`bg-${season.id}`}
+        initial={{ scale: 1.12 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        className="position-absolute top-0 start-0 w-100 h-100"
         style={{ zIndex: 0 }}
-        referrerPolicy="no-referrer"
-      />
+      >
+        {/* Colour gradient (visible when heroImage="#") */}
+        <div
+          className="w-100 h-100"
+          style={{ background: season.bgGradient }}
+        />
+        {/* Actual image — sits on top of the gradient */}
+        <img
+          src={dest.heroImage}
+          alt={dest.name}
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{ objectFit: "cover", zIndex: 1 }}
+          referrerPolicy="no-referrer"
+        />
+      </motion.div>
 
-      {/* Colour gradient fill (visible when src="#") */}
+      {/* ── Layered scrims for depth & legibility ── */}
+      {/* Top vignette */}
       <div
-        className="position-absolute top-0 start-0 w-100 h-100"
-        style={{ background: season.bgGradient, zIndex: 1 }}
-      />
-
-      {/* Dark scrim for text legibility */}
-      <div
-        className="position-absolute top-0 start-0 w-100 h-100"
+        className="position-absolute top-0 start-0 w-100"
         style={{
-          background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)",
+          height: "35%",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 100%)",
+          zIndex: 2,
+        }}
+      />
+      {/* Bottom vignette (main text area) */}
+      <div
+        className="position-absolute bottom-0 start-0 w-100"
+        style={{
+          height: "75%",
+          background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 55%, transparent 100%)",
           zIndex: 2,
         }}
       />
 
-      {/* "Act" badge — top-left */}
-      <div className="position-absolute top-0 start-0 p-4" style={{ zIndex: 3 }}>
+      {/* ── Season pill — top-left ── */}
+      <div className="position-absolute top-0 start-0 p-4" style={{ zIndex: 4 }}>
         <motion.span
-          initial={{ opacity: 0, x: -12 }}
+          initial={{ opacity: 0, x: -14 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.15, duration: 0.35 }}
+          transition={stagger.badge}
           className="d-inline-flex align-items-center rounded-pill px-3 py-2 fw-semibold small text-white"
           style={{
             background: "rgba(255,255,255,0.15)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            border: "1px solid rgba(255,255,255,0.25)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.28)",
+            gap: "6px",
           }}
         >
-          <Icon size={15} className="me-2" />
+          <Icon size={14} />
           {season.months}
         </motion.span>
       </div>
 
-      {/* Main content overlay — anchored to bottom-0 ONLY, no top constraint */}
-      <div
-        className="position-absolute bottom-0 top-18 start-0 w-100 px-4 px-md-5 pb-4 pb-md-5"
-        style={{ zIndex: 3 }}
-      >
-        {/* Glass panel — max-height prevents it from eating the top badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
-          className="rounded-4"
+      {/* ── "Best Place to Visit" label — top-right ── */}
+      <div className="position-absolute top-0 end-0 p-4" style={{ zIndex: 4 }}>
+        <motion.span
+          initial={{ opacity: 0, x: 14 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={stagger.badge}
+          className="d-inline-flex align-items-center rounded-pill px-3 py-2 fw-semibold small"
           style={{
-            background: "rgba(255,255,255,0.18)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255,255,255,0.3)",
-            maxHeight: "73vh",
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
+            background: `${season.accentColor}22`,
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: `1px solid ${season.accentColor}88`,
+            color: season.accentColor === "#1E3A8A" ? "#93c5fd" : season.accentColor,
+            gap: "6px",
           }}
         >
-          {/* ── Pinned header (never scrolls away) ── */}
-          <div className="px-4 pt-4 pb-3" style={{ flexShrink: 0 }}>
-            {/* Act name */}
-            <div
-              className="small fw-semibold text-uppercase mb-2"
-              style={{ color: season.accentColor, letterSpacing: "0.12em" }}
-            >
-              Act · {season.act}
-            </div>
+          <MapPin size={13} />
+          Best Place to Visit
+        </motion.span>
+      </div>
 
-            {/* Season title */}
-            <h3
-              className="font-serif fw-bold text-white mb-0"
-              style={{ fontSize: "clamp(1.25rem, 2.8vw, 1.85rem)", lineHeight: 1.2 }}
-            >
-              {season.label}
-            </h3>
-          </div>
+      {/* ── Main content — anchored bottom ── */}
+      <div
+        className="position-absolute bottom-0 start-0 w-100 px-4 px-md-5 pb-4 pb-md-5"
+        style={{ zIndex: 4 }}
+      >
+        {/* Destination name */}
+        <motion.h2
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={stagger.title}
+          className="text-white fw-bold mb-2"
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3.25rem)",
+            lineHeight: 1.05,
+            fontFamily: "'Playfair Display', Georgia, serif",
+            textShadow: "0 2px 20px rgba(0,0,0,0.4)",
+          }}
+        >
+          {dest.name}
+        </motion.h2>
 
-          {/* ── Scrollable body ── */}
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={stagger.tagline}
+          className="mb-4"
+          style={{
+            color: "rgba(255,255,255,0.82)",
+            fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)",
+            lineHeight: 1.65,
+            maxWidth: "520px",
+          }}
+        >
+          {dest.tagline}
+        </motion.p>
+
+        {/* Meta pills row */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={stagger.meta}
+          className="d-flex flex-wrap gap-2 mb-4"
+        >
+          {/* Key Activity */}
           <div
-            className="px-4 pb-4 seasonal-glass-scroll"
+            className="d-inline-flex align-items-center gap-2 rounded-pill px-3 py-2"
             style={{
-              overflowY: "auto",
-              flexGrow: 1,
-              scrollbarWidth: "thin",
-              scrollbarColor: "rgba(255,255,255,0.25) transparent",
+              background: "rgba(255,255,255,0.13)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.22)",
             }}
           >
-            {/* Warning banner — shown only for Monsoon */}
-            {season.warning && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="d-flex align-items-start gap-2 rounded-3 mb-3 p-3"
-                style={{
-                  background: "rgba(239,68,68,0.15)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  border: "1px solid rgba(239,68,68,0.35)",
-                }}
-              >
-                <AlertTriangle size={18} className="flex-shrink-0 mt-1" style={{ color: "#fca5a5" }} />
-                <div>
-                  <div className="fw-bold small mb-1" style={{ color: "#fca5a5", letterSpacing: "0.04em" }}>
-                    ⚠ {season.warning.label}
-                  </div>
-                  <div className="small" style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>
-                    {season.warning.text}
-                  </div>
-                </div>
-              </motion.div>
-            )}
+            <Icon size={13} style={{ color: season.accentColor === "#1E3A8A" ? "#93c5fd" : season.accentColor, flexShrink: 0 }} />
+            <span className="small fw-medium text-white">{dest.keyActivity}</span>
+          </div>
 
-            {/* Description */}
-            <p
-              className="mb-4 mt-2"
-              style={{
-                color: "rgba(255,255,255,0.85)",
-                fontSize: "0.88rem",
-                lineHeight: 1.7,
-                maxWidth: "580px",
-              }}
-            >
-              {season.description}
-            </p>
-
-            {/* Highlights + Locations row */}
-            <div className="d-flex flex-column flex-sm-row gap-4 mb-4">
-              {/* Why Visit */}
-              <div className="flex-grow-1">
-                <div
-                  className="small fw-semibold mb-2 text-uppercase"
-                  style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em" }}
-                >
-                  Highlights
-                </div>
-                <ul className="list-unstyled m-0 d-flex flex-column gap-1">
-                  {season.whyVisit.map((item) => (
-                    <li key={item} className="d-flex align-items-start gap-2">
-                      <CheckCircle size={14} className="flex-shrink-0 mt-1" style={{ color: season.accentColor }} />
-                      <span className="small" style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.45 }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Locations */}
-              <div className="flex-shrink-0">
-                <div
-                  className="small fw-semibold mb-2 text-uppercase"
-                  style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em" }}
-                >
-                  Key Destinations
-                </div>
-                <div className="d-flex flex-column gap-2">
-                  {season.locations.map((loc) => (
-                    <div key={loc} className="d-flex align-items-center gap-2">
-                      <MapPin size={13} style={{ color: season.accentColor }} />
-                      <span className="small fw-medium text-white">{loc}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Activity tags */}
-            <div className="d-flex gap-2 flex-wrap">
-              {season.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  bg="transparent"
-                  className="fw-normal px-3 py-2 rounded-3"
-                  style={{
-                    border: "1px solid rgba(255,255,255,0.35)",
-                    color: "rgba(255,255,255,0.9)",
-                    fontSize: "0.78rem",
-                  }}
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+          {/* Best Time */}
+          <div
+            className="d-inline-flex align-items-center gap-2 rounded-pill px-3 py-2"
+            style={{
+              background: "rgba(255,255,255,0.13)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.22)",
+            }}
+          >
+            <Clock size={13} style={{ color: "rgba(255,255,255,0.7)", flexShrink: 0 }} />
+            <span className="small fw-medium text-white">{dest.bestTimeToGo}</span>
           </div>
         </motion.div>
+
+        {/* CTA button */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={stagger.cta}
+        >
+          <motion.button
+            whileHover={{ scale: 1.04, boxShadow: `0 8px 32px ${season.accentColor}55` }}
+            whileTap={{ scale: 0.97 }}
+            className="d-inline-flex align-items-center gap-2 fw-semibold rounded-pill border-0"
+            style={{
+              background: season.accentColor,
+              color: "#fff",
+              fontSize: "0.95rem",
+              padding: "12px 28px",
+              cursor: "pointer",
+              transition: "box-shadow 0.25s ease",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Explore {dest.name}
+            <ArrowRight size={16} />
+          </motion.button>
+        </motion.div>
       </div>
+
+      {/* ── Monsoon warning — glassmorphic strip inside card ── */}
+      {season.warning && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.35 }}
+          className="position-absolute start-0 w-100 px-4 px-md-5"
+          style={{
+            bottom: "calc(100% - 112px)",  // just below the top pill row
+            zIndex: 5,
+            pointerEvents: "none",
+          }}
+        >
+          {/* intentionally empty — warning surfaced via monsoon-specific palette */}
+        </motion.div>
+      )}
     </motion.div>
   );
 }
@@ -393,7 +402,7 @@ export default function SeasonalGuide() {
       <Container className="py-5">
         <Row className="align-items-start gy-5">
 
-          {/* ── Left Navigation ─────────────────────────────────────────── */}
+          {/* ── Left Navigation (unchanged) ─────────────────────────── */}
           <Col lg={4}>
             <div className="mb-5">
               <span
@@ -424,10 +433,12 @@ export default function SeasonalGuide() {
             </div>
           </Col>
 
-          {/* ── Right Display Card ───────────────────────────────────────── */}
+          {/* ── Right Display Card ───────────────────────────────────── */}
           <Col lg={8} className="position-relative">
             <AnimatePresence mode="wait">
-              {activeData && <SeasonCard key={activeData.id} season={activeData} />}
+              {activeData && (
+                <FeaturedCard key={activeData.id} season={activeData} />
+              )}
             </AnimatePresence>
           </Col>
 

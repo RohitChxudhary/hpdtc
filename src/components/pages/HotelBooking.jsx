@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 const FEATURED_HOTELS = [
-  { id: 1, name: 'The Holiday Home', location: 'Shimla', price: '₹ 3,500', rating: 4.5, image: 'https://images.unsplash.com/photo-1542314831-c6a4d1409e50?q=80&w=800&auto=format&fit=crop' },
+  { id: 1, name: 'The Holiday Home', location: 'Shimla', price: '₹ 3,500', rating: 4.5, image: 'https://3.imimg.com/data3/NO/VJ/MY-6916176/55.jpg' },
   { id: 2, name: 'The Castle', location: 'Naggar', price: '₹ 4,200', rating: 4.7, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=800&auto=format&fit=crop' },
   { id: 3, name: 'The Palace', location: 'Chail', price: '₹ 5,500', rating: 4.8, image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=800&auto=format&fit=crop' },
 ];
@@ -379,7 +379,8 @@ export default function HotelBooking() {
                   type="button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#FF5A2A] hover:bg-white text-white hover:text-[#002060] px-12 py-4 rounded-full font-black text-lg transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,90,42,0.4)] hover:shadow-[0_15px_30px_-10px_rgba(0,32,96,0.2)] flex items-center justify-center gap-3"
+                  // className="w-full bg-[#FF5A2A] hover:bg-white hover:text-[#000000] text-white px-12 py-4 rounded-full font-black text-lg transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,90,42,0.4)] hover:shadow-[0_15px_30px_-10px_rgba(0,32,96,0.2)] flex items-center justify-center gap-3"
+                  className="w-full bg-[#FF5A2A] hover:bg-white hover:!text-black text-white px-12 py-4 rounded-full font-black text-lg transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,90,42,0.4)] hover:shadow-[0_15px_30px_-10px_rgba(0,32,96,0.2)] flex items-center justify-center gap-3"
                 >
                   Contact Specialist
                 </motion.button>

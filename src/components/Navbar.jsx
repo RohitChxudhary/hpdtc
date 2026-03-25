@@ -12,10 +12,11 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 
 const NAV_ITEMS = [
   {
-    title: "Plan Your Trip",
+    title: "Explore",
     columns: [
       {
         heading: "Discover",
@@ -24,7 +25,6 @@ const NAV_ITEMS = [
           { name: "Tourist Circuits", desc: "Explore curated journeys" },
           { name: "Travel Tips", desc: "Practical advice for your trip" },
           { name: "Access (How to Reach)", desc: "Getting here made easy" },
-          { name: "Local Taxis", desc: "Reliable transport options" },
         ],
       },
     ],
@@ -300,7 +300,7 @@ const Navbar = () => {
               </span>
             </Link>
 
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-4">
+            <nav className="hidden lg:flex items-center space-x-3 xl:space-x-4 ml-4">
               {NAV_ITEMS.map((item) => (
                 <div
                   key={item.title}
@@ -337,6 +337,8 @@ const Navbar = () => {
                 <Phone className="w-3.5 h-3.5 fill-white animate-pulse" />
                 <span className="text-sm tracking-widest">SOS</span>
               </a>
+
+              <div className="hidden lg:flex items-center gap-2 border-l border-gray-200 pl-4">
               <button 
                 onClick={() => {
                   if (window.location.pathname !== "/") {
@@ -349,15 +351,20 @@ const Navbar = () => {
                     }
                   }
                 }}
-                className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-1.5 rounded-full hover:bg-gray-50/90 group flex items-center justify-center">
+                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
+                style={{ borderRadius: '50%' }}
+                >
                 <img src="/hp-logo.png" alt="HP Logo" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform drop-shadow-sm" />
               </button>
+              <LanguageSelector isMobile={false} />
               <button 
                 onClick={() => setIsSearchOpen(true)}
-                className="text-[#002060] hover:text-[#FF5A2A] transition-colors p-1.5 rounded-full hover:bg-gray-50/90 group"
+                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
+                style={{ borderRadius: '50%' }}
               >
-                <Search className="w-5 h-5 group-hover:scale-110 transition-transform drop-shadow-sm" />
+                <Search className="w-8 h-8" />
               </button>
+              </div>
             </div>
 
             <div className="flex lg:hidden items-center space-x-4">
@@ -373,6 +380,7 @@ const Navbar = () => {
                 >
                 <Search className="w-5 h-5" />
               </button>
+              <LanguageSelector isMobile={true} />
               <button
                 className="text-[#002060] p-1.5 hover:bg-gray-50 rounded-full transition-colors focus:outline-none"
                 onClick={() => setMobileMenuOpen(true)}

@@ -25,6 +25,7 @@ import TravelTips from "./components/pages/TravelTips";
 import Access from "./components/pages/Access";
 import LocalTaxis from "./components/pages/LocalTaxis";
 import Weather from "./components/pages/Weather";
+import BusBooking from "./components/pages/BusBooking";
 
 export default function App() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/access" element={<Access />} />
         <Route path="/local-taxis" element={<LocalTaxis />} />
         <Route path="/weather" element={<Weather />} />
+        <Route path="/bus-booking" element={<BusBooking />} />
       </Routes>
 
       <Footer />

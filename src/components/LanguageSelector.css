@@ -1,0 +1,49 @@
+/* LanguageSelector.css */
+
+/* Hide the Google Translate Top Bar */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
+    display: none !important;
+} 
+
+/* Prevent the page from shifting down due to Google Translate */
+body {
+    top: 0px !important; 
+}
+
+/* Hide the "Powered by Google" widget completely */
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0px !important;
+}
+.goog-te-gadget .goog-te-combo {
+    display: none !important;
+}
+.goog-logo-link {
+    display: none !important;
+}
+.goog-te-gadget img {
+    display: none !important;
+}
+.skiptranslate.goog-te-gadget {
+    display: none !important;
+}
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important; /* Extra Google popup branding */
+}
+
+/* Custom scrollbar for our language list */
+.lang-list-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.lang-list-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.lang-list-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 99px;
+}
+.lang-list-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+

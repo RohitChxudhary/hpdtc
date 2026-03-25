@@ -65,8 +65,8 @@ export default function Footer() {
               <InputGroup>
                 <Form.Control 
                   type="email" 
-                  placeholder="Your email address" 
-                  className="bg-white bg-opacity-10 border-white border-opacity-25 text-white shadow-none"
+                  placeholder="your email address" 
+                  className="bg-gray-800 bg-opacity-10 border-white placeholder-white border-opacity-25 text-black shadow-none"
                 />
                 <Button className="btn-h-saffron fw-semibold">
                   Subscribe

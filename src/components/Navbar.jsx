@@ -631,8 +631,38 @@ const Navbar = () => {
                   <ul className="pl-4 space-y-1 mt-1">
                     {item.columns[0].links.map((link) => (
                       <li key={link.name}>
-                        <a
-                          href="#"
+                        <Link
+                          to={
+                            link.name === "Hotels"
+                              ? "/hotels"
+                              : link.name === "Huts & Cottages"
+                                ? "/huts-cottages"
+                                : link.name === "Hotel Booking"
+                                  ? "/hotel-booking"
+                                  : link.name === "Events"
+                                    ? "/events"
+                                    : link.name === "Cuisines"
+                                      ? "/cuisines"
+                                      : link.name === "Awards"
+                                        ? "/awards"
+                                      : link.name === "Feedback"
+                                        ? "/feedback"
+                                      : link.name === "Contacts"
+                                        ? "/contacts"
+                                      : link.name === "Plan Your Visit"
+                                    ? "/plan-your-trip"
+                                    : link.name === "Tourist Circuits"
+                                      ? "/tourist-circuits"
+                                      : link.name === "Travel Tips"
+                                        ? "/travel-tips"
+                                        : link.name === "Access (How to Reach)"
+                                          ? "/access"
+                                          : link.name === "Local Taxis"
+                                            ? "/local-taxis"
+                                            : link.name === "Bus Booking"
+                                              ? "/bus-booking"
+                                              : "#"
+                          }
                           className="block py-2.5 px-3 rounded-lg hover:bg-gray-50/80 group/mobilelink transition-all"
                         >
                           <div className="flex items-center text-gray-700 font-semibold group-hover/mobilelink:text-[#F97316] transition-colors text-[15px]">
@@ -642,7 +672,7 @@ const Navbar = () => {
                           <div className="text-[13px] text-gray-500 mt-1 ml-6">
                             {link.desc}
                           </div>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

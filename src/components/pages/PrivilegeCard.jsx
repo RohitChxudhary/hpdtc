@@ -26,8 +26,8 @@ export default function PrivilegeCard() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] pt-28 pb-24 font-sans overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-[800px] overflow-hidden z-0 pointer-events-none">
+    <div className="min-h-screen bg-[#FDFBF7] pt-28 pb-24 font-sans overflow-x-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-[800px] overflow-x-hidden pointer-events-none">
         <motion.div 
           style={{ y }}
           animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.4, 0.3], rotate: [0, 5, 0] }}
@@ -92,7 +92,7 @@ export default function PrivilegeCard() {
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full blur-[40px] -mr-32 -mt-32 pointer-events-none" />
           
-          <div className="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 relative">
             <div className="w-full lg:w-1/2">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 mb-6 border border-amber-100 shadow-sm">
                 <CreditCard className="w-8 h-8" />

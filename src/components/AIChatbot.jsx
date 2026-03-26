@@ -90,7 +90,7 @@ export default function VoiceAssistant() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className={`position-fixed bottom-0 end-0 m-4 z-3 rounded-circle border-0 d-flex align-items-center justify-content-center ${isOpen ? 'd-none' : 'd-flex'}`}
+        className={`position-fixed bottom-0 end-0 m-4 z-10 rounded-circle border-0 d-flex align-items-center justify-content-center ${isOpen ? 'd-none' : 'd-flex'}`}
         style={{ width: '60px', height: '60px', backgroundColor: 'var(--accent)', color: 'white' }}
       >
         <Mic size={28} />

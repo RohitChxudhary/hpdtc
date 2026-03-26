@@ -20,8 +20,6 @@ import {
   Bus,
 } from 'lucide-react';
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-
 const LOCATIONS = [
   'Shimla', 'Manali', 'Dharamshala', 'Kullu', 'Dalhousie',
   'Chamba', 'Mandi', 'Solan', 'Palampur', 'Kasauli',
@@ -120,8 +118,6 @@ const buildSeats = () => {
     booked: bookedSeats.includes(i + 1),
   }));
 };
-
-// ─── Sub-components ───────────────────────────────────────────────────────────
 
 const AmenityIcon = ({ type }) => {
   const map = {
@@ -523,7 +519,7 @@ function SeatModal({ bus, onClose }) {
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// Main Page 
 
 export default function BusBooking() {
   const today = new Date().toISOString().split('T')[0];
@@ -562,7 +558,7 @@ export default function BusBooking() {
   return (
     <div className="pt-[72px] min-h-screen bg-[#FAFCFF] font-sans text-[#1A1A1A]">
 
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+      {/*Hero */}
       <section className="relative h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1920&auto=format&fit=crop&q=80"
@@ -674,7 +670,7 @@ export default function BusBooking() {
         </div>
       </section>
 
-      {/* ── Results Area ───────────────────────────────────────────────────── */}
+      {/* Results Area  */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {searched && (
           <div className="flex flex-col lg:flex-row gap-8">
@@ -763,7 +759,7 @@ export default function BusBooking() {
           </div>
         )}
 
-        {/* ── Popular Routes ────────────────────────────────────────────────── */}
+        {/* Popular Routes */}
         <section className="mt-20">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -771,42 +767,48 @@ export default function BusBooking() {
               <p className="text-gray-400 mt-1">Frequently travelled scenic corridors across Himachal</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {POPULAR_ROUTES.map((route, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative overflow-hidden rounded-3xl cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3]"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative overflow-hidden rounded-3xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 min-h-[280px] flex flex-col justify-end"
               >
                 {/* Image wrapper — own overflow-hidden so card's framer scale doesn't break clipping */}
                 <div className="absolute inset-0 overflow-hidden rounded-3xl">
                   <img
                     src={route.image}
                     alt={`${route.from} to ${route.to}`}
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                    className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-700 ease-in-out"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002060]/90 via-[#002060]/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-white font-black text-lg leading-tight">{route.from}</span>
-                    <ArrowRight className="w-4 h-4 text-[#FF5A2A] flex-shrink-0" />
-                    <span className="text-white font-black text-lg leading-tight">{route.to}</span>
+                {/* Premium Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002060]/95 via-[#002060]/40 to-transparent" />
+                
+                {/* Content block - Center aligned & flexible */}
+                <div className="relative z-10 w-full p-6 flex flex-col items-center text-center mt-auto">
+                  <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-2.5 w-full">
+                    <span className="text-white font-black text-xl leading-tight drop-shadow-md">{route.from}</span>
+                    <ArrowRight className="w-5 h-5 text-[#FF5A2A] flex-shrink-0 drop-shadow-md" />
+                    <span className="text-white font-black text-xl leading-tight drop-shadow-md">{route.to}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-white/70 text-xs font-semibold">
-                    <span><Clock className="inline w-3 h-3 mr-0.5" />{route.duration}</span>
-                    <span className="text-[#FF5A2A] font-black">From ₹{route.price}</span>
+                  <div className="flex flex-wrap items-center justify-center gap-3 text-white/90 text-sm font-semibold w-full">
+                    <span className="flex items-center whitespace-nowrap"><Clock className="w-3.5 h-3.5 mr-1" />{route.duration}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                    <span className="text-[#FF5A2A] font-black tracking-wide whitespace-nowrap">From ₹{route.price}</span>
                   </div>
                 </div>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-xl text-[#002060] text-xs font-black opacity-0 group-hover:opacity-100 transition-all translate-y-1 group-hover:translate-y-0">
-                  Book Now <ChevronRight className="inline w-3 h-3" />
+
+                {/* Glassmorphism Badge */}
+                <div className="absolute top-6 inset-x-0 mx-auto w-max bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-white/50 text-[#002060] text-xs font-black shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 flex items-center gap-1.5">
+                  Book Now <ChevronRight className="w-4 h-4" />
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ── Why Choose Us ─────────────────────────────────────────────────── */}
+        {/* Why Choose Us */}
         <section className="mt-20 bg-gradient-to-br from-[#002060] to-[#003B99] rounded-[40px] p-10 md:p-14 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FF5A2A]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
@@ -835,7 +837,7 @@ export default function BusBooking() {
         </section>
       </div>
 
-      {/* ── Booking Modal ─────────────────────────────────────────────────── */}
+      {/* Booking Modal */}
       <AnimatePresence>
         {selectedBus && (
           <SeatModal bus={selectedBus} onClose={() => setSelectedBus(null)} />

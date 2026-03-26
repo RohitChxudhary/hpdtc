@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import Story from './components/Story';
 import HorizontalCategories from './components/HorizontalCategories';
 import PlacesToGo from './components/PlacesToGo';
-import ThingsToDo from './components/ThingsToDo';
 import SeasonalGuide from './components/SeasonalGuide';
 import InteractiveMap from './components/InteractiveMap';
 import PropertyShowcase from './components/PropertyShowcase';
@@ -65,7 +64,6 @@ export default function App() {
               <HorizontalCategories />
               <Story />
               <PlacesToGo />
-              <ThingsToDo />
               <SeasonalGuide />
               <InteractiveMap />
               <PropertyShowcase />

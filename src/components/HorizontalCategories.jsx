@@ -14,7 +14,7 @@ const CATEGORIES = [
   },
   {
     id: "culture",
-    title: "Culture",
+    title: "Cultural",
     icon: Landmark,
     color: "#0369A1",
     bg: "rgba(3, 105, 161, 0.1)",
@@ -22,7 +22,7 @@ const CATEGORIES = [
   },
   {
     id: "adventure",
-    title: "Adventure",
+    title: "Adventurous",
     icon: Mountain,
     color: "#065F46",
     bg: "rgba(6, 95, 70, 0.1)",

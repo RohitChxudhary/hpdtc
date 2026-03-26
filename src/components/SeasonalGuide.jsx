@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { Sun, Snowflake, Leaf, CloudRain, MapPin, ArrowRight, Clock } from "lucide-react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 
+import ParaBirBillingImg from './images/para in bir billing.jpg';
+import SpitiVellyImg from './images/spitiy velly.jpg';
+import ManaliImg from './images/manali.jpg';
+
 // ─── Season Data ──────────────────────────────────────────────────────────────
 const SEASONS = [
   {
@@ -16,7 +20,7 @@ const SEASONS = [
     featuredDestination: {
       name: "Bir Billing",
       tagline: "Soar above the Himalayas from the world's finest paragliding site.",
-      heroImage: "#",
+      heroImage: ParaBirBillingImg,
       keyActivity: "Paragliding over the valley",
       bestTimeToGo: "March to May",
     },
@@ -52,7 +56,7 @@ const SEASONS = [
     featuredDestination: {
       name: "Spiti Valley",
       tagline: "Golden larch forests beneath skies so clear you can count the Milky Way's stars.",
-      heroImage: "#",
+      heroImage: SpitiVellyImg,
       keyActivity: "Stargazing & larch forest trails",
       bestTimeToGo: "October to mid-November",
     },
@@ -68,7 +72,7 @@ const SEASONS = [
     featuredDestination: {
       name: "Manali & Sethan",
       tagline: "Drift off in an igloo, then carve fresh powder on untouched slopes at dawn.",
-      heroImage: "#",
+      heroImage: ManaliImg,
       keyActivity: "Igloo stays & fresh powder skiing",
       bestTimeToGo: "December to February",
     },

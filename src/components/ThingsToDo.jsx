@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
+import ParaBirBillingImg from './images/para in bir billing.jpg';
+import HamptaPassImg from './images/hampta pass.jpg';
+import KangraFortImg from './images/kangra fort.jpeg';
+import HotSpringVashishtImg from './images/hot spring vashisht.jpg';
+
 const categories = ['All', 'Adventure', 'Spirituality', 'Wellness', 'Culture'];
 
 const activities = [
@@ -9,7 +14,7 @@ const activities = [
     id: 1,
     title: 'Paragliding in Bir Billing',
     category: 'Adventure',
-    image: '#',
+    image: ParaBirBillingImg,
   },
   {
     id: 2,
@@ -27,19 +32,19 @@ const activities = [
     id: 4,
     title: 'Trek the Hampta Pass',
     category: 'Adventure',
-    image: '#',
+    image: HamptaPassImg,
   },
   {
     id: 5,
     title: 'Explore Kangra Fort',
     category: 'Culture',
-    image: '#',
+    image: KangraFortImg,
   },
   {
     id: 6,
     title: 'Hot Springs at Vashisht',
     category: 'Wellness',
-    image: '#',
+    image: HotSpringVashishtImg,
   },
 ];
 

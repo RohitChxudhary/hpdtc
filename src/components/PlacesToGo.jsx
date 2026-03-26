@@ -3,25 +3,30 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
+import ShimlaImg from './images/shimla.jpeg';
+import ManaliImg from './images/manali.jpg';
+import SpitiVellyImg from './images/spitiy velly.jpg';
+import KinnaurImg from './images/kinnaur.jpeg';
+
 const places = [
   {
     name: 'Shimla',
     desc: 'The Queen of Hills',
-    image: '#',
+    image: ShimlaImg,
     colSpan: 'col-md-6',
     rowSpan: 'h-100',
   },
   {
     name: 'Manali',
     desc: 'Valley of the Gods',
-    image: '#',
+    image: ManaliImg,
     colSpan: 'col-md-3',
     rowSpan: 'h-50',
   },
   {
     name: 'Spiti Valley',
     desc: 'The Middle Land',
-    image: '#',
+    image: SpitiVellyImg,
     colSpan: 'col-md-3',
     rowSpan: 'h-100',
   },
@@ -35,7 +40,7 @@ const places = [
   {
     name: 'Kinnaur',
     desc: 'Land of Fairytales',
-    image: '#',
+    image: KinnaurImg,
     colSpan: 'col-md-6',
     rowSpan: 'h-50',
   },

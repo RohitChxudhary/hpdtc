@@ -70,20 +70,24 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
               className="d-flex justify-content-center mt-4 gap-3 gap-md-4 flex-column flex-sm-row"
             >
               <motion.button
                 onClick={() => window.open("https://play.google.com/store/apps/details?id=nic.hp.hptdc.app&hl=en", "_blank")}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(249,115,22,0.4)' }}
                 whileTap={{ scale: 0.95 }}
-                className="rounded-pill fw-bold text-white border-0 position-relative"
+                // animate={{ y: [0, -5, 0] }}
+                // transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="rounded-pill fw-bold text-white border-0 position-relative glass-shine overflow-hidden"
                 style={{
-                  padding: "16px 36px",
-                  fontSize: "1.1rem",
-                  background: "linear-gradient(135deg, #F97316 0%, #C2410C 100%)",
+                  padding: "18px 42px",
+                  fontSize: "1.15rem",
+                  minWidth: "250px", // Exact same size
+                  background: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)",
                   cursor: "pointer",
-                  letterSpacing: "0.5px"
+                  letterSpacing: "0.5px",
+                  boxShadow: '0 10px 20px -5px rgba(234,88,12,0.5)'
                 }}
               >
                 <span className="position-relative" style={{ zIndex: 1 }}>Download App</span>
@@ -94,13 +98,14 @@ export default function Hero() {
                   navigate("/weather");
                   window.scrollTo(0, 0);
                 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.2)' }}
                 whileTap={{ scale: 0.95 }}
-                className="rounded-pill fw-bold text-white border-0 position-relative"
+                className="rounded-pill fw-bold text-white border-2 border-white/40 position-relative backdrop-blur-md"
                 style={{
-                  padding: "16px 36px",
-                  fontSize: "1.1rem",
-                  background: "linear-gradient(135deg, #F97316 0%, #C2410C 100%)",
+                  padding: "18px 42px",
+                  fontSize: "1.15rem",
+                  minWidth: "250px", // Exact same size
+                  background: "rgba(255,255,255,0.1)",
                   cursor: "pointer",
                   letterSpacing: "0.5px"
                 }}

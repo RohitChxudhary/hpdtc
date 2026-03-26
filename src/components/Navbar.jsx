@@ -342,7 +342,7 @@ const Navbar = () => {
                     <button
                       onClick={() => setActiveDropdown(activeDropdown === item.title ? null : item.title)}
                       className={clsx(
-                        "flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-pointer",
+                        "relative flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-pointer group/nav",
                         activeDropdown === item.title
                           ? "text-[#FF5A2A]"
                           : "hover:text-[#FF5A2A]",
@@ -355,6 +355,11 @@ const Navbar = () => {
                           activeDropdown === item.title ? "rotate-180" : "",
                         )}
                       />
+                      {/* Premium Underline Animation */}
+                      <span className={clsx(
+                        "absolute bottom-1 left-1/2 w-0 h-0.5 bg-[#FF5A2A] transition-all duration-300 -translate-x-1/2 rounded-full",
+                        activeDropdown === item.title ? "w-[60%]" : "group-hover/nav:w-[60%]"
+                      )}></span>
                     </button>
                   </div>
                 </div>

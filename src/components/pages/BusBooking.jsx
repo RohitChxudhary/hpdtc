@@ -88,19 +88,19 @@ const BUS_DATA = [
 const POPULAR_ROUTES = [
   {
     from: 'Shimla', to: 'Manali', duration: '9h 30m', price: '750',
-    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&auto=format&fit=crop&q=60',
+    image: 'bus_booking/shimla_manali.jpg',
   },
   {
     from: 'Dharamshala', to: 'Chandigarh', duration: '5h 00m', price: '550',
-    image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop&q=60',
+    image: 'bus_booking/dharamshala_chandigarh.jpeg',
   },
   {
     from: 'Delhi', to: 'Shimla', duration: '9h 00m', price: '900',
-    image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&auto=format&fit=crop&q=60',
+    image: 'bus_booking/delhi_shimla.jpeg',
   },
   {
     from: 'Chandigarh', to: 'Manali', duration: '7h 00m', price: '650',
-    image: 'https://images.unsplash.com/photo-1609766857413-d984aaca2ea5?w=600&auto=format&fit=crop&q=60',
+    image: '',
   },
 ];
 

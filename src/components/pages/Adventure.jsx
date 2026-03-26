@@ -41,7 +41,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Soar over lush valleys and experience world-class tandem flights with breathtaking panoramic aerial views.",
     seasonalAvailability: "March \u2013 June, Sep \u2013 Nov",
     safetyIconTag: "air-glider-icon",
-    imageUrl: "https://images.unsplash.com/photo-1528150222046-c2269a84dd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/paragliding.jpg"
   },
   {
     activityName: "River Rafting",
@@ -50,7 +50,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Navigate thrilling white-water rapids through deep mountain gorges for an ultimate adrenaline-pumping adventure.",
     seasonalAvailability: "April \u2013 June",
     safetyIconTag: "river-wave-icon",
-    imageUrl: "https://images.unsplash.com/photo-1534067160759-3fb76f183cdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/river_rafting.jpeg"
   },
   {
     activityName: "Trekking",
@@ -59,7 +59,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Explore pristine alpine pastures and conquer snow-capped peaks on unforgettable, scenic high-altitude mountain trails.",
     seasonalAvailability: "May \u2013 October",
     safetyIconTag: "mountain-hiking-icon",
-    imageUrl: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/trekking.jpeg"
   },
   {
     activityName: "Skiing",
@@ -68,7 +68,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Glide down pristine powdery slopes and master thrilling winter descents amid breathtaking snowy landscapes.",
     seasonalAvailability: "January \u2013 March",
     safetyIconTag: "snow-ski-icon",
-    imageUrl: "https://images.unsplash.com/photo-1551524164-687a55dd1126?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/skiing.jpeg"
   },
   {
     activityName: "Heli-Skiing",
@@ -77,7 +77,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Experience the ultimate winter thrill by dropping onto extraordinary untouched snow slopes from a helicopter.",
     seasonalAvailability: "January \u2013 March",
     safetyIconTag: "helicopter-snow-icon",
-    imageUrl: "https://images.unsplash.com/photo-1549429158-b7eb47063cc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/heli_skiing.jpg"
   },
   {
     activityName: "Mountain Cycling",
@@ -86,7 +86,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Conquer rugged trails and traverse extraordinarily diverse geographic terrains on breathtaking mountain cycling expeditions.",
     seasonalAvailability: "All year (except Monsoons)",
     safetyIconTag: "mountain-bike-icon",
-    imageUrl: "https://images.unsplash.com/photo-1563299796-17596ed6b05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/mountain_cycling.jpeg"
   },
   {
     activityName: "Angling",
@@ -95,7 +95,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Relax and enjoy peaceful Brown and Rainbow Trout fishing in crystal-clear, pristine idyllic mountain rivers.",
     seasonalAvailability: "April \u2013 October",
     safetyIconTag: "fishing-rod-icon",
-    imageUrl: "https://images.unsplash.com/photo-1583095304724-c102b4d95267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/angling.jpeg"
   },
   {
     activityName: "Golfing",
@@ -104,7 +104,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Tee off at one of India's oldest and most spectacularly scenic 9-hole mountain golf courses.",
     seasonalAvailability: "All year",
     safetyIconTag: "golf-flag-icon",
-    imageUrl: "https://images.unsplash.com/photo-1587174486073-ae5e1c43f415?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/golfing.jpeg"
   },
   {
     activityName: "Vehicle Safaris",
@@ -113,7 +113,7 @@ const ADVENTURE_DATA = [
     keyHighlights: "Embark on an adventurous off-road vehicle safari through unexplored, immensely picturesque landscapes of Churah Valley.",
     seasonalAvailability: "All year",
     safetyIconTag: "safari-jeep-icon",
-    imageUrl: "https://images.unsplash.com/photo-1534888059080-6927a3c307e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "adventure/vehicle_safaris.jpeg"
   }
 ];
 

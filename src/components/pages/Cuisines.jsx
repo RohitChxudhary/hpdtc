@@ -11,7 +11,7 @@ const CUISINES_DATA = [
     description: "Slow-cooked mutton infused with the tangy richness of buttermilk and aromatic spices.",
     image: {
       tag: "traditional-indian-mutton-curry",
-      placeholderUrl: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/chah_meat.jpeg",
       altText: "Rich, slow-cooked Himachali Chah Meat mutton curry"
     }
   },
@@ -23,7 +23,7 @@ const CUISINES_DATA = [
     description: "A Mandi specialty featuring lentil dumplings simmered in a luscious spinach and curd gravy.",
     image: {
       tag: "spinach-gravy-dumplings",
-      placeholderUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/sepu_vadi.jpeg",
       altText: "Sepu Vadi in rich spinach and curd gravy"
     }
   },
@@ -35,7 +35,7 @@ const CUISINES_DATA = [
     description: "A rich and creamy yogurt-based stew loaded with white chickpeas and sweet dry fruits.",
     image: {
       tag: "chickpea-yogurt-curry",
-      placeholderUrl: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/channa_madra.jpeg",
       altText: "Creamy Channa Madra made with chickpeas and yogurt"
     }
   },
@@ -47,7 +47,7 @@ const CUISINES_DATA = [
     description: "Distinctive steamed wheat bread packed with a savory poppy seed stuffing, generously served with melted ghee.",
     image: {
       tag: "steamed-stuffed-bread",
-      placeholderUrl: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/siddu.jpeg",
       altText: "Traditional steamed Siddu bread served with ghee"
     }
   },
@@ -59,7 +59,7 @@ const CUISINES_DATA = [
     description: "A comforting, traditional Himachali pudding made by slow-cooking nutrient-rich Bathu seeds in sweetened milk.",
     image: {
       tag: "traditional-indian-kheer-pudding",
-      placeholderUrl: "https://images.unsplash.com/photo-1551468132-73a7aa95cc37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/bathu_ki_kheer.jpeg",
       altText: "Sweet Bathu ki Kheer dessert served in a bowl"
     }
   },
@@ -71,7 +71,7 @@ const CUISINES_DATA = [
     description: "A delightful medley of sweet and sour flavors featuring tender pumpkin tossed in indigenous spices.",
     image: {
       tag: "sweet-and-sour-pumpkin-curry",
-      placeholderUrl: "https://images.unsplash.com/photo-1520023646018-c288594247de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      placeholderUrl: "cuisines/khatia_kaddu.jpeg",
       altText: "Sweet and tangy Khatia Kaddu pumpkin preparation"
     }
   }

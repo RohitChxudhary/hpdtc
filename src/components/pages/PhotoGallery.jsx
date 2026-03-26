@@ -8,7 +8,7 @@ const GALLERY_DATA = [
     id: "satluj",
     title: "Satluj Circuit Gallery",
     featuredLocations: "Shimla, Chail, Sarahan, Narkanda, Renukaji",
-    images: ["https://images.unsplash.com/photo-1594882645126-14020914d58d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1629202302324-ee40498db257?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1591107597148-3569768a4170?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    images: ["circuits/satluj_circuit_1.jpeg", "circuits/satluj_circuit_2.jpeg", "circuits/satluj_circuit_3.jpeg"],
     circuitLink: "/tourist-circuits#satluj",
     color: "from-blue-500 to-indigo-600"
   },
@@ -16,7 +16,7 @@ const GALLERY_DATA = [
     id: "beas",
     title: "Beas Circuit Gallery",
     featuredLocations: "Kullu, Manali, Mandi",
-    images: ["https://images.unsplash.com/photo-1594056254700-149ab06fb483?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1605649487212-4dcf3b6ea2c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1641656885370-dcbac92fd582?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    images: ["circuits/beas_circuit_1.jpeg", "circuits/beas_circuit_2.jpeg", "circuits/beas_circuit_3.jpeg"],
     circuitLink: "/tourist-circuits#beas",
     color: "from-amber-500 to-orange-600"
   },
@@ -24,7 +24,7 @@ const GALLERY_DATA = [
     id: "dhauladhar",
     title: "Dhauladhar Circuit Gallery",
     featuredLocations: "Dharamshala, Khajjiar, Palampur, Jawalaji",
-    images: ["https://images.unsplash.com/photo-1623912124571-d68a9f6d4829?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1522867497255-a070eb3745ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1632766863110-09b93b8e7343?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    images: ["circuits/dhauladhar_circuit_1.jpeg", "circuits/dhauladhar_circuit_2.jpeg", "circuits/dhauladhar_circuit_3.jpeg"],
     circuitLink: "/tourist-circuits#dhauladhar",
     color: "from-emerald-500 to-teal-600"
   },
@@ -32,7 +32,7 @@ const GALLERY_DATA = [
     id: "tribal",
     title: "Tribal Circuit Gallery",
     featuredLocations: "Kalpa, Keylong, Kaza, Bharmour",
-    images: ["https://images.unsplash.com/photo-1582046890352-7ce5389f4174?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1550920405-b0ae9f20e401?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1521453228945-8f85f3dc2c2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    images: ["circuits/tribal_circuit_1.jpeg", "circuits/tribal_circuit_2.jpeg", "circuits/tribal_circuit_3.jpeg"],
     circuitLink: "/tourist-circuits#tribal",
     color: "from-purple-500 to-pink-600"
   }

@@ -11,7 +11,7 @@ const EVENTS_DATA = [
     duration: "7 Days",
     highlights: ["Grand cultural festivities", "Deity processions"],
     image: {
-      path: "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/kullu_dusshera.jpg",
       altText: "Vibrant procession of local deities at Kullu Dusshera festival"
     }
   },
@@ -23,7 +23,7 @@ const EVENTS_DATA = [
     duration: "3 Days",
     highlights: ["Cultural programs", "Regional performances"],
     image: {
-      path: "https://images.unsplash.com/photo-1526392060635-9d60198d3de6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/international_himalayan_festival.jpeg",
       altText: "Traditional cultural programs at the International Himalayan Festival"
     }
   },
@@ -35,7 +35,7 @@ const EVENTS_DATA = [
     duration: "3 Months",
     highlights: ["Ice skating competitions", "Winter sports"],
     image: {
-      path: "https://images.unsplash.com/photo-1548450143-6d0e816aee99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/ice_skating_carnival.jpeg",
       altText: "People enjoying the open-air ice skating rink carnival"
     }
   },
@@ -47,7 +47,7 @@ const EVENTS_DATA = [
     duration: "7 Days",
     highlights: ["Special HPTDC packages", "Gala dinners"],
     image: {
-      path: "https://images.unsplash.com/photo-1512389142860-9c262522ca60?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/christmas_new_year.jpeg",
       altText: "Festive Christmas and New Year decorations across HPTDC properties"
     }
   },
@@ -59,7 +59,7 @@ const EVENTS_DATA = [
     duration: "Varies",
     highlights: ["Local music", "Traditional dancing"],
     image: {
-      path: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/halda_sazo.jpg",
       altText: "Bonfires, traditional music, and dancing during Halda and Sazo"
     }
   },
@@ -71,7 +71,7 @@ const EVENTS_DATA = [
     duration: "Varies",
     highlights: ["Skiing", "Food Fest", "Local Bands"],
     image: {
-      path: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/himachal_winter_carnival.jpeg",
       altText: "Skiing events and winter food fest in Manali"
     }
   },
@@ -83,7 +83,7 @@ const EVENTS_DATA = [
     duration: "Varies",
     highlights: ["Mask Dances", "Buddhist rituals"],
     image: {
-      path: "https://images.unsplash.com/photo-1517036665790-caed0668d2de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/losar_festival.jpeg",
       altText: "Monks performing vibrant mask dances for the Losar Festival"
     }
   },
@@ -95,7 +95,7 @@ const EVENTS_DATA = [
     duration: "7 Days",
     highlights: ["Gathering of local deities", "Grand fairs"],
     image: {
-      path: "https://images.unsplash.com/photo-1603513686851-eb2cddf85a21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/mandi_shivaratri.jpeg",
       altText: "Massive religious gathering of deities during Mandi Shivaratri"
     }
   },
@@ -107,7 +107,7 @@ const EVENTS_DATA = [
     duration: "Varies",
     highlights: ["Wrestling matches", "Cattle trading"],
     image: {
-      path: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      path: "events/nalwari_fair.jpeg",
       altText: "Local wrestling match and cattle trading at Bilaspur Nalwari Fair"
     }
   }

@@ -9,63 +9,63 @@ const CONFERENCE_DATA = [
     location: "Barog",
     capacity: "20 - 500",
     description: "A popular destination hotel that helped establish Barog as a full-fledged tourist spot.",
-    imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_pinewood_barog.jpeg"
   },
   {
     venueName: "The Holiday Home",
     location: "Shimla",
     capacity: "30 - 1000",
     description: "HPTDC's flagship hotel; an imposing building located in the heart of town with comprehensive facilities.",
-    imageUrl: "https://images.unsplash.com/photo-1542314831-c6a4d14d837e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_holiday_home.jpeg"
   },
   {
     venueName: "The Peterhof",
     location: "Shimla",
     capacity: "30 - 1500",
     description: "Historical landmark that housed seven Viceroys and Governor Generals; located near the Viceregal Lodge.",
-    imageUrl: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_peterhof_shimla.jpeg"
   },
   {
     venueName: "The Palace",
     location: "Chail",
     capacity: "20 - 100",
     description: "Built in 1891 by the Maharaja of Patiala; set in 75 acres of regal gardens with spectacular views.",
-    imageUrl: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_palace_chail.jpeg"
   },
   {
     venueName: "The Hamir",
     location: "Hamirpur",
     capacity: "20 - 200",
     description: "Conveniently located on the highway to Jwalamukhi, near the main bus station.",
-    imageUrl: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_hamir_hamirpur.jpeg"
   },
   {
     venueName: "Hotel Dhauladhar",
     location: "Dharamshala",
     capacity: "20 - 60",
     description: "Offers commanding views of the Dhauladhar mountain ranges and the Pong Dam reservoir.",
-    imageUrl: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/hotel_dhauladhar_dharamshala.jpeg"
   },
   {
     venueName: "The Tea Bud",
     location: "Palampur",
     capacity: "15 - 60",
     description: "Located in the finest part of town, directly opposite lush tea gardens.",
-    imageUrl: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/the_tea_bud_palampur.jpeg"
   },
   {
     venueName: "Hotel Manimahesh",
     location: "Dalhousie",
     capacity: "15 - 60",
     description: "A modern hotel named after the sacred Mount Manimahesh, which is visible from the property.",
-    imageUrl: "https://images.unsplash.com/photo-1621293954908-907159247fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/hotel_manimahesh_dalhousie.jpeg"
   },
   {
     venueName: "Hotel Jwalaji",
     location: "Jwalamukhi",
     capacity: "15 - 80",
     description: "An elegant dressed-stone building with lawns, located 350m from the sacred shrine.",
-    imageUrl: "https://images.unsplash.com/photo-1560662105-57f8ad6ae2d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "conference/hotel_jwalaji_jawalamukhi.jpeg"
   }
 ];
 

@@ -6,47 +6,47 @@ const SCREENSAVER_DATA = [
   {
     title: "Prashar Lake, Mandi",
     description: "A mysterious floating island lake surrounded by the Dhauladhar ranges.",
-    imageUrl: "https://images.unsplash.com/photo-1626714485856-17b5f25264b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/prashar_lake_mndi.jpeg",
   },
   {
     title: "The Kailash Cottage, Kalpa",
     description: "A panoramic view of the HPTDC property overlooking the Himalayas.",
-    imageUrl: "https://images.unsplash.com/photo-1542314831-c6a4d14d837e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/the_kailash_cottage_kalpa.jpeg",
   },
   {
     title: "The Kinner Kailash, Kalpa",
     description: "Majestic views of the sacred peak known for its color-changing properties.",
-    imageUrl: "https://images.unsplash.com/photo-1594882645126-14020914d58d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/the_kinner_kailash_kalpa.jpeg",
   },
   {
     title: "The Giriganga, Kharapathar",
     description: "A serene forest and mountain view near the source of the Giri River.",
-    imageUrl: "https://images.unsplash.com/photo-1550920405-b0ae9f20e401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/the_giriganga_kharapathar.jpeg",
   },
   {
     title: "The Srikhand, Sarahan",
     description: "Stunning landscapes featuring the Srikhand Mahadev peak.",
-    imageUrl: "https://images.unsplash.com/photo-1522867497255-a070eb3745ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/the_srikhand_sarahan.jpeg",
   },
   {
     title: "The Apple Blossom, Fagu",
     description: "Seasonal beauty of apple orchards in the high-altitude village of Fagu.",
-    imageUrl: "https://images.unsplash.com/photo-1610486807887-ed8acc2453ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/the_apple_blossom_fagu.jpeg",
   },
   {
     title: "Shimla - Red Carpet Awaits",
     description: "A scenic road view in the Rohru region of Shimla district.",
-    imageUrl: "https://images.unsplash.com/photo-1629202302324-ee40498db257?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/shimla_red.jpg",
   },
   {
     title: "Fields from Castle Naggar",
     description: "A lush agricultural view from the historic Naggar Castle in Kullu.",
-    imageUrl: "https://images.unsplash.com/photo-1641656885370-dcbac92fd582?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/fields_castle_naggar.jpeg",
   },
   {
     title: "Khajjiar, Chamba",
     description: "The 'Mini Switzerland of India' featuring vast meadows and cedar forests.",
-    imageUrl: "https://images.unsplash.com/photo-1623912124571-d68a9f6d4829?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "screen_saver/khajjiar_chamba.jpeg",
   }
 ];
 

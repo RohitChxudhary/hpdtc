@@ -418,7 +418,7 @@ export default function SeasonalGuide() {
               <h2 className="display-5 font-serif fw-bold text-h-dark mb-3">
                 Nature's Four Acts
               </h2>
-              <p className="text-secondary" style={{ lineHeight: 1.7 }}>
+              <p className="text-dark" style={{ lineHeight: 1.7 }}>
                 Himachal Pradesh transforms dramatically with every season.
                 Each chapter of the year offers an entirely different world to explore.
               </p>

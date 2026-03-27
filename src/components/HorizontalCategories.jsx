@@ -78,7 +78,7 @@ export default function HorizontalCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lead text-muted mx-auto"
+            className="lead text-dark mx-auto"
             style={{ maxWidth: '650px' }}
           >
             Find exactly what you're looking for in the majestic landscapes of Himachal. From thrilling adventures to serene spiritual escapes.

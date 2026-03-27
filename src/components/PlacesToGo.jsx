@@ -56,7 +56,7 @@ export default function PlacesToGo() {
             <h2 className="display-4 font-serif fw-bold text-h-dark mb-3">
               Places to Go
             </h2>
-            <p className="lead text-secondary" style={{ maxWidth: '600px' }}>
+            <p className="lead text-dark" style={{ maxWidth: '600px' }}>
               Discover the diverse regions of Himachal, from bustling hill stations to remote, high-altitude deserts.
             </p>
           </div>

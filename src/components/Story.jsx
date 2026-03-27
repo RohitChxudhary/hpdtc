@@ -24,10 +24,10 @@ export default function Story() {
                 <span className="fst-italic text-h-green fw-light">Himachal</span>
               </h2>
               <div className="bg-h-saffron mb-4" style={{ width: '50px', height: '4px' }}></div>
-              <p className="lead text-secondary mb-4">
+              <p className="lead text-dark mb-4">
                 Nestled in the western Himalayas, Himachal Pradesh is a tapestry of ancient traditions, diverse cultures, and breathtaking landscapes. It's a place where every valley has its own deity, every village its own dialect, and every season its own distinct color.
               </p>
-              <p className="lead text-secondary mb-5">
+              <p className="lead text-dark mb-5">
                 From the colonial charm of Shimla to the stark, lunar landscapes of Lahaul and Spiti, journey through a land that has inspired sages, artists, and wanderers for millennia.
               </p>
               <button className="btn btn-link text-h-blue fw-bold text-decoration-none p-0 d-flex align-items-center group">

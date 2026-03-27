@@ -9,7 +9,7 @@ export default function VoiceAssistant() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [response, setResponse] = useState('How can I help you explore Himachal?');
-  const [lang, setLang] = useState('en-IN'); // Default to Indian English
+  const [lang, setLang] = useState('en-IN');
 
   const recognitionRef = useRef(null);
 
@@ -40,7 +40,7 @@ export default function VoiceAssistant() {
       recognitionRef.current.stop();
       setIsListening(false);
     } else {
-      window.speechSynthesis.cancel(); // Stop any current speaking
+      window.speechSynthesis.cancel(); 
       setTranscript('');
       setResponse('Listening...');
       recognitionRef.current.lang = lang;
@@ -50,7 +50,6 @@ export default function VoiceAssistant() {
   };
 
   const handleLogic = (input) => {
-    // Simple demo logic - you can connect this to an API later
     let reply = "";
     if (lang === 'hi-IN') {
       reply = `हिमाचल में आपका स्वागत है! आपने ${input} के बारे में पूछा। यह बहुत सुंदर जगह है।`;

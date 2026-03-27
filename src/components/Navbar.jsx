@@ -14,23 +14,23 @@ import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 
-// Explore button images 
-import SpitiyVellyImg from './images/spitiy velly.jpg';
-import ManaliRetreatImg from './images/manali_retreat.jpg';
-import ShimlaRidgeImg from './images/shimla_ridge.jpg';
+// Explore button images
+import SpitiyVellyImg from "./images/spitiy velly.jpg";
+import ManaliRetreatImg from "./images/manali_retreat.jpg";
+import ShimlaRidgeImg from "./images/shimla_ridge.jpg";
 
-// Stay button images 
-import LuxuryStayImg from './images/luxury_hotel.jpg';
-import BoutiqueHotelsImg from './images/boutique_hotel.jpeg';
-import NatureHotelsImg from './images/nature_hotel.jpeg';
+// Stay button images
+import LuxuryStayImg from "./images/luxury_hotel.jpg";
+import BoutiqueHotelsImg from "./images/boutique_hotel.jpeg";
+import NatureHotelsImg from "./images/nature_hotel.jpeg";
 
 // Transport button image
-import HimanchalTransportImg from './images/himanchal_transport.jpg';
+import HimanchalTransportImg from "./images/himanchal_transport.jpg";
 
 //Experience button images
-import HimanchalCulturalImg from './images/himanchal_culture.jpeg';
-import LocalCuisinesImg from './images/local_cuisines.jpeg';
-import AdventureImg from './images/paragliding_hp.jpg';
+import HimanchalCulturalImg from "./images/himanchal_culture.jpeg";
+import LocalCuisinesImg from "./images/local_cuisines.jpeg";
+import AdventureImg from "./images/paragliding_hp.jpg";
 
 const NAV_ITEMS = [
   {
@@ -207,7 +207,9 @@ const MegaMenuCard = ({ image, title, subtitle, link, onClick }) => {
       }}
       className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-video md:aspect-[4/3] shadow-sm hover:shadow-lg transition-all duration-300 h-full"
     >
-      <img loading="lazy" src={image}
+      <img
+        loading="lazy"
+        src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
       />
@@ -220,7 +222,13 @@ const MegaMenuCard = ({ image, title, subtitle, link, onClick }) => {
       </div>
     </motion.div>
   );
-  return link ? <Link to={link} className="block h-full" onClick={onClick}>{content}</Link> : content;
+  return link ? (
+    <Link to={link} className="block h-full" onClick={onClick}>
+      {content}
+    </Link>
+  ) : (
+    content
+  );
 };
 
 const FeaturedCard = ({ image, title, cta, link, onClick }) => {
@@ -232,7 +240,9 @@ const FeaturedCard = ({ image, title, cta, link, onClick }) => {
       }}
       className="group relative overflow-hidden rounded-2xl cursor-pointer h-full min-h-[180px] shadow-sm hover:shadow-xl transition-all duration-300"
     >
-      <img loading="lazy" src={image}
+      <img
+        loading="lazy"
+        src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
       />
@@ -248,7 +258,13 @@ const FeaturedCard = ({ image, title, cta, link, onClick }) => {
       </div>
     </motion.div>
   );
-  return link ? <Link to={link} className="block h-full" onClick={onClick}>{content}</Link> : content;
+  return link ? (
+    <Link to={link} className="block h-full" onClick={onClick}>
+      {content}
+    </Link>
+  ) : (
+    content
+  );
 };
 
 const Navbar = () => {
@@ -310,12 +326,20 @@ const Navbar = () => {
     <>
       <header
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 font-sans ${
+        className={clsx(
+          "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 font-sans",
+          // Base Glassmorphism Styles
+          "backdrop-blur-md border-b",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-100"
-            : "bg-white/90 backdrop-blur-md shadow-sm py-2.5"
-        }`}
-        style={{ color: "#002060" }}
+            ? "bg-white/80 shadow-lg py-2 border-white/20"
+            : "bg-white/90 shadow-sm py-3 border-transparent",
+        )}
+        style={{
+          color: "#002060",
+          // Adding a subtle saturation boost makes the colors behind the glass "pop"
+          backdropFilter: "blur(12px) saturate(160%)",
+          WebkitBackdropFilter: "blur(12px) saturate(160%)",
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex justify-between items-center relative z-50">
@@ -334,13 +358,14 @@ const Navbar = () => {
 
             <nav className="hidden lg:flex items-center space-x-3 xl:space-x-4 ml-4">
               {NAV_ITEMS.map((item) => (
-                <div
-                  key={item.title}
-                  className="relative h-full"
-                >
+                <div key={item.title} className="relative h-full">
                   <div className="flex items-center h-full pt-0.5 pb-0.5">
                     <button
-                      onClick={() => setActiveDropdown(activeDropdown === item.title ? null : item.title)}
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === item.title ? null : item.title,
+                        )
+                      }
                       className={clsx(
                         "relative flex items-center gap-1 font-semibold px-3 py-2 text-sm xl:text-[15px] transition-colors focus:outline-none rounded-full cursor-pointer group/nav",
                         activeDropdown === item.title
@@ -356,10 +381,14 @@ const Navbar = () => {
                         )}
                       />
                       {/* Premium Underline Animation */}
-                      <span className={clsx(
-                        "absolute bottom-1 left-1/2 w-0 h-0.5 bg-[#FF5A2A] transition-all duration-300 -translate-x-1/2 rounded-full",
-                        activeDropdown === item.title ? "w-[60%]" : "group-hover/nav:w-[60%]"
-                      )}></span>
+                      <span
+                        className={clsx(
+                          "absolute bottom-1 left-1/2 w-0 h-0.5 bg-[#FF5A2A] transition-all duration-300 -translate-x-1/2 rounded-full",
+                          activeDropdown === item.title
+                            ? "w-[60%]"
+                            : "group-hover/nav:w-[60%]",
+                        )}
+                      ></span>
                     </button>
                   </div>
                 </div>
@@ -367,7 +396,7 @@ const Navbar = () => {
             </nav>
 
             <div className="hidden lg:flex items-center space-x-5 xl:space-x-6 ml-4">
-              <a 
+              <a
                 href="tel:112"
                 className="flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-red-500 text-white px-3.5 py-1.5 rounded-full font-bold shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_20px_rgba(220,38,38,0.8)] transform hover:-translate-y-0.5 transition-all"
               >
@@ -376,45 +405,51 @@ const Navbar = () => {
               </a>
 
               <div className="hidden lg:flex items-center gap-2 border-l border-gray-200 pl-4">
-              <button 
-                onClick={() => {
-                  if (window.location.pathname !== "/") {
-                    window.location.href = "/#interactive-map";
-                  } else {
-                    const el = document.getElementById("interactive-map");
-                    if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY - 60;
-                      window.scrollTo({ top: y, behavior: "smooth" });
+                <button
+                  onClick={() => {
+                    if (window.location.pathname !== "/") {
+                      window.location.href = "/#interactive-map";
+                    } else {
+                      const el = document.getElementById("interactive-map");
+                      if (el) {
+                        const y =
+                          el.getBoundingClientRect().top + window.scrollY - 60;
+                        window.scrollTo({ top: y, behavior: "smooth" });
+                      }
                     }
-                  }
-                }}
-                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
-                style={{ borderRadius: '50%' }}
+                  }}
+                  className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
+                  style={{ borderRadius: "50%" }}
                 >
-                <img loading="lazy" src="/hp-logo.png" alt="HP Logo" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform drop-shadow-sm" />
-              </button>
-              <LanguageSelector isMobile={false} />
-              <button 
-                onClick={() => setIsSearchOpen(true)}
-                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
-                style={{ borderRadius: '50%' }}
-              >
-                <Search className="w-8 h-8" />
-              </button>
+                  <img
+                    loading="lazy"
+                    src="/hp-logo.png"
+                    alt="HP Logo"
+                    className="w-8 h-8 object-contain group-hover:scale-110 transition-transform drop-shadow-sm"
+                  />
+                </button>
+                <LanguageSelector isMobile={false} />
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ease-in-out hover:bg-black/5 hover:scale-110 hover:shadow-[0_0_10px_rgba(0,0,0,0.3)] focus:outline-none overflow-hidden border-0 p-0 bg-transparent"
+                  style={{ borderRadius: "50%" }}
+                >
+                  <Search className="w-8 h-8" />
+                </button>
               </div>
             </div>
 
             <div className="flex lg:hidden items-center space-x-4">
-              <a 
+              <a
                 href="tel:112"
                 className="flex items-center justify-center bg-gradient-to-r from-red-600 to-red-500 text-white w-8 h-8 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.4)] animate-pulse"
               >
                 <Phone className="w-4 h-4 fill-white flex-shrink-0" />
               </a>
-              <button 
+              <button
                 onClick={() => setIsSearchOpen(true)}
                 className="text-[#002060] p-1.5 hover:bg-gray-50 rounded-full transition-colors"
-                >
+              >
                 <Search className="w-5 h-5" />
               </button>
               <LanguageSelector isMobile={true} />
@@ -483,38 +518,47 @@ const Navbar = () => {
                                                   ? "/cuisines"
                                                   : link.name === "Awards"
                                                     ? "/awards"
-                                                  : link.name === "Feedback"
-                                                    ? "/feedback"
-                                                  : link.name === "Contacts"
-                                                    ? "/contacts"
-                                                  : link.name === "Plan Your Visit"
-                                                ? "/plan-your-trip"
-                                                : link.name ===
-                                                    "Tourist Circuits"
-                                                  ? "/tourist-circuits"
-                                                  : link.name === "Travel Tips"
-                                                    ? "/travel-tips"
-                                                    : link.name ===
-                                                        "Access (How to Reach)"
-                                                      ? "/access"
-                                                      : link.name ===
-                                                          "Local Taxis"
-                                                        ? "/local-taxis"
-                                                        : link.name === "Bus Booking"
-                                                          ? "/bus-booking"
-                                                          : link.name === "Adventure"
-                                                            ? "/adventure"
-                                                            : link.name === "Conference"
-                                                              ? "/conference"
-                                                              : link.name === "Privilege Card"
-                                                                ? "/privilege-card"
-                                                                : link.name === "Photo Gallery"
-                                                                  ? "/photo-gallery"
-                                                                  : link.name === "Photography Contest"
-                                                                    ? "/photography-contest"
-                                                                    : link.name === "Screen Saver"
-                                                                      ? "/screen-saver"
-                                                                      : "#"
+                                                    : link.name === "Feedback"
+                                                      ? "/feedback"
+                                                      : link.name === "Contacts"
+                                                        ? "/contacts"
+                                                        : link.name ===
+                                                            "Plan Your Visit"
+                                                          ? "/plan-your-trip"
+                                                          : link.name ===
+                                                              "Tourist Circuits"
+                                                            ? "/tourist-circuits"
+                                                            : link.name ===
+                                                                "Travel Tips"
+                                                              ? "/travel-tips"
+                                                              : link.name ===
+                                                                  "Access (How to Reach)"
+                                                                ? "/access"
+                                                                : link.name ===
+                                                                    "Local Taxis"
+                                                                  ? "/local-taxis"
+                                                                  : link.name ===
+                                                                      "Bus Booking"
+                                                                    ? "/bus-booking"
+                                                                    : link.name ===
+                                                                        "Adventure"
+                                                                      ? "/adventure"
+                                                                      : link.name ===
+                                                                          "Conference"
+                                                                        ? "/conference"
+                                                                        : link.name ===
+                                                                            "Privilege Card"
+                                                                          ? "/privilege-card"
+                                                                          : link.name ===
+                                                                              "Photo Gallery"
+                                                                            ? "/photo-gallery"
+                                                                            : link.name ===
+                                                                                "Photography Contest"
+                                                                              ? "/photography-contest"
+                                                                              : link.name ===
+                                                                                  "Screen Saver"
+                                                                                ? "/screen-saver"
+                                                                                : "#"
                                       }
                                       className="relative block p-4 rounded-2xl !no-underline border-2 border-gray-400 bg-white transition-all duration-300 ease-out group/link hover:-translate-y-[4px] hover:scale-[1.03] hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.50)] hover:border-[#1E3A8A]"
                                     >
@@ -627,10 +671,21 @@ const Navbar = () => {
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="mt-8 text-center"
               >
-                <p className="text-gray-500 font-medium mb-4">Try searching for:</p>
+                <p className="text-gray-500 font-medium mb-4">
+                  Try searching for:
+                </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  {["Shimla", "Manali Stays", "Spiti Valley", "Hotel Booking", "Treks"].map((term) => (
-                    <button key={term} className="px-5 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-[#002060] hover:border-[#FF5A2A] hover:text-[#FF5A2A] hover:bg-orange-50 transition-all shadow-sm font-semibold">
+                  {[
+                    "Shimla",
+                    "Manali Stays",
+                    "Spiti Valley",
+                    "Hotel Booking",
+                    "Treks",
+                  ].map((term) => (
+                    <button
+                      key={term}
+                      className="px-5 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-[#002060] hover:border-[#FF5A2A] hover:text-[#FF5A2A] hover:bg-orange-50 transition-all shadow-sm font-semibold"
+                    >
                       {term}
                     </button>
                   ))}
@@ -709,35 +764,44 @@ const Navbar = () => {
                                       ? "/cuisines"
                                       : link.name === "Awards"
                                         ? "/awards"
-                                      : link.name === "Feedback"
-                                        ? "/feedback"
-                                      : link.name === "Contacts"
-                                        ? "/contacts"
-                                      : link.name === "Plan Your Visit"
-                                    ? "/plan-your-trip"
-                                    : link.name === "Tourist Circuits"
-                                      ? "/tourist-circuits"
-                                      : link.name === "Travel Tips"
-                                        ? "/travel-tips"
-                                        : link.name === "Access (How to Reach)"
-                                          ? "/access"
-                                          : link.name === "Local Taxis"
-                                            ? "/local-taxis"
-                                            : link.name === "Bus Booking"
-                                              ? "/bus-booking"
-                                              : link.name === "Adventure"
-                                                ? "/adventure"
-                                                : link.name === "Conference"
-                                                  ? "/conference"
-                                                  : link.name === "Privilege Card"
-                                                    ? "/privilege-card"
-                                                    : link.name === "Photo Gallery"
-                                                      ? "/photo-gallery"
-                                                      : link.name === "Photography Contest"
-                                                        ? "/photography-contest"
-                                                        : link.name === "Screen Saver"
-                                                          ? "/screen-saver"
-                                                          : "#"
+                                        : link.name === "Feedback"
+                                          ? "/feedback"
+                                          : link.name === "Contacts"
+                                            ? "/contacts"
+                                            : link.name === "Plan Your Visit"
+                                              ? "/plan-your-trip"
+                                              : link.name === "Tourist Circuits"
+                                                ? "/tourist-circuits"
+                                                : link.name === "Travel Tips"
+                                                  ? "/travel-tips"
+                                                  : link.name ===
+                                                      "Access (How to Reach)"
+                                                    ? "/access"
+                                                    : link.name ===
+                                                        "Local Taxis"
+                                                      ? "/local-taxis"
+                                                      : link.name ===
+                                                          "Bus Booking"
+                                                        ? "/bus-booking"
+                                                        : link.name ===
+                                                            "Adventure"
+                                                          ? "/adventure"
+                                                          : link.name ===
+                                                              "Conference"
+                                                            ? "/conference"
+                                                            : link.name ===
+                                                                "Privilege Card"
+                                                              ? "/privilege-card"
+                                                              : link.name ===
+                                                                  "Photo Gallery"
+                                                                ? "/photo-gallery"
+                                                                : link.name ===
+                                                                    "Photography Contest"
+                                                                  ? "/photography-contest"
+                                                                  : link.name ===
+                                                                      "Screen Saver"
+                                                                    ? "/screen-saver"
+                                                                    : "#"
                           }
                           className="block py-2.5 px-3 rounded-lg hover:bg-gray-50/80 group/mobilelink transition-all"
                         >
@@ -761,7 +825,7 @@ const Navbar = () => {
         {/* Mobile Bottom Actions */}
         <div className="p-5 border-t border-gray-100 bg-gray-50">
           <div className="flex justify-center gap-12 text-[#002060]">
-            <button 
+            <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 if (window.location.pathname !== "/") {
@@ -770,22 +834,30 @@ const Navbar = () => {
                   setTimeout(() => {
                     const el = document.getElementById("interactive-map");
                     if (el) {
-                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+                      const y =
+                        el.getBoundingClientRect().top + window.scrollY - 80;
                       window.scrollTo({ top: y, behavior: "smooth" });
                     }
                   }, 100);
                 }
               }}
-              className="flex flex-col items-center gap-1 p-2 hover:text-[#FF5A2A] transition-colors group">
-              <img loading="lazy" src="/hp-logo.png" alt="HP Logo" className="w-9 h-9 object-contain group-hover:-translate-y-1 transition-transform" />
+              className="flex flex-col items-center gap-1 p-2 hover:text-[#FF5A2A] transition-colors group"
+            >
+              <img
+                loading="lazy"
+                src="/hp-logo.png"
+                alt="HP Logo"
+                className="w-9 h-9 object-contain group-hover:-translate-y-1 transition-transform"
+              />
               <span className="text-xs font-semibold">Locations</span>
             </button>
-            <button 
+            <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 setIsSearchOpen(true);
               }}
-              className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group">
+              className="flex flex-col items-center gap-1.5 p-2 hover:text-[#FF5A2A] transition-colors group"
+            >
               <Search className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
               <span className="text-xs font-semibold">Search</span>
             </button>

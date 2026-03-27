@@ -6,7 +6,7 @@ import { Container, Form, Button, Row, Col, Badge } from 'react-bootstrap';
 export default function InteractiveMap() {
   const [originInput, setOriginInput] = useState('');
   const [destInput, setDestInput] = useState('');
-  const [mapUrl, setMapUrl] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.22!2d77.1734!3d31.1048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390578e3e35d0f67%3A0x1fb89467614e59f!2sHimachal%20Pradesh!5e0!3m2!1sen!2sin!4v1647425000000!5m2!1sen!2sin");
+  const [mapUrl, setMapUrl] = useState("https://maps.google.com/maps?q=Himachal%20Pradesh&output=embed");
 
   const handlePlanTour = (e) => {
     e.preventDefault();

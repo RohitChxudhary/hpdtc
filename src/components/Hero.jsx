@@ -2,7 +2,7 @@ import React from "react";
 import { motion, MotionConfig } from "motion/react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import HimachalHero from './images/new_hero.png';
+import HimachalHero from './images/akash-rawat.jpg';
 
 
 const LAYOUT_SPRING = { type: "spring", stiffness: 200, damping: 28 };
@@ -30,8 +30,7 @@ export default function Hero() {
           <div
             className="position-absolute top-0 start-0 w-100 h-100 pointer-events-none"
             style={{
-              background:
-                "linear-gradient(to top, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0) 100%)",
+              background: "rgba(15, 23, 42, 0.5)",
             }}
           />
         </div>
@@ -48,7 +47,7 @@ export default function Hero() {
             style={{ maxWidth: "800px" }}
           >
             <span
-              className="text-h-saffron fw-semibold text-uppercase small mb-3 d-block"
+              className="text-h-saffron fw-semibold text-uppercase  mb-3 d-block"
               style={{ letterSpacing: "0.1em" }}
             >
               Devbhumi — Land of the Gods
@@ -83,7 +82,7 @@ export default function Hero() {
                 style={{
                   padding: "18px 42px",
                   fontSize: "1.15rem",
-                  minWidth: "250px", // Exact same size
+                  minWidth: "250px", 
                   background: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)",
                   cursor: "pointer",
                   letterSpacing: "0.5px",

@@ -199,19 +199,25 @@ const NAV_ITEMS = [
 ];
 
 const MegaMenuCard = ({ image, title, subtitle, link, onClick }) => {
-  const content = (
+  return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 15 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-video md:aspect-[4/3] shadow-sm hover:shadow-lg transition-all duration-300 h-full"
+      /* 1. Define the hover state on the PARENT */
+      whileHover="hovered" 
+      initial="initial"
+      className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-video md:aspect-[4/3] shadow-sm h-full"
     >
-      <img
+      <motion.img
         loading="lazy"
         src={image}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        className="absolute inset-0 w-full h-full object-cover"
+        /* 2. Link the image scale to the parent's "hovered" state */
+        variants={{
+          initial: { scale: 1 },
+          hovered: { scale: 1.1 }
+        }}
+        /* 3. Set a very long duration to test if it's working */
+        transition={{ duration: 0.7, ease: "easeOut" }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#002060]/90 via-[#002060]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
       <div className="absolute bottom-0 left-0 p-5">
@@ -235,26 +241,39 @@ const MegaMenuCard = ({ image, title, subtitle, link, onClick }) => {
 const FeaturedCard = ({ image, title, cta, link, onClick }) => {
   const content = (
     <motion.div
+      // 1. Define the hover trigger on the parent
+      initial="initial"
+      whileHover="hovered"
       variants={{
         hidden: { opacity: 0, y: 15 },
         visible: { opacity: 1, y: 0 },
       }}
-      className="group relative overflow-hidden rounded-2xl cursor-pointer h-full min-h-[180px] shadow-sm hover:shadow-xl transition-all duration-300"
+      className="group relative overflow-hidden rounded-2xl cursor-pointer h-full min-h-[180px] shadow-sm hover:shadow-xl transition-all duration-700 ease-in-out"
     >
-      <img
+      {/* 2. Change to motion.img and use variants for the scale */}
+      <motion.img
         loading="lazy"
         src={image}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        className="absolute inset-0 w-full h-full object-cover"
+        variants={{
+          initial: { scale: 1 },
+          hovered: { scale: 1.1 }
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#002060]/90 via-[#002060]/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 p-6 w-full">
-        <h3 className="text-white font-extrabold text-2xl mb-2 group-hover:text-[#FF5A2A] transition-colors">
+      
+      {/* 3. Add pointer-events-none to the gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#002060]/90 via-[#002060]/20 to-transparent pointer-events-none" />
+      
+      {/* 4. Add pointer-events-none to the text container */}
+      <div className="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
+        <h3 className="text-white font-extrabold text-2xl mb-2 group-hover:text-[#FF5A2A] transition-colors duration-500">
           {title}
         </h3>
-        <div className="flex items-center text-white font-semibold text-sm group-hover:text-[#FF5A2A] transition-colors">
+        <div className="flex items-center text-white font-semibold text-sm group-hover:text-[#FF5A2A] transition-colors duration-500">
           {cta}{" "}
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-500" />
         </div>
       </div>
     </motion.div>
@@ -356,7 +375,7 @@ const Navbar = () => {
               <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#002060] to-[#003B99] shadow-md flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
                 <span className="text-white font-bold text-lg">HP</span>
               </div>
-              <span className="font-extrabold text-[1.3rem] hidden sm:block tracking-tight text-[#FF5A2A] drop-shadow-sm group-hover:text-[#FF5A2A] transition-colors duration-300">
+              <span className="font-extrabold text-[1.3rem] hidden sm:block tracking-tight text-h-saffron drop-shadow-sm transition-colors duration-300">
                 HPTDC
               </span>
             </Link>
@@ -487,8 +506,6 @@ const Navbar = () => {
                   WebkitBackdropFilter: "blur(12px) saturate(160%)",
                 }}
               >
-                {/* Bridge to prevent hover gap issues */}
-                <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent -z-10"></div>
 
                 {/* This inner div handles the scrolling while the outer motion.div handles the blur */}
                 <div className="max-h-[calc(100vh-6rem)] overflow-y-auto">
@@ -511,7 +528,7 @@ const Navbar = () => {
                         >
                           {item.columns.map((col, idx) => (
                             <div key={idx} className="w-full">
-                              <h4 className="font-bold text-[11px] tracking-[0.2em] uppercase text-white/50 mb-6 px-3">
+                              <h4 className="font-bold text-[11px] tracking-[0.2em] uppercase text-white mb-4 px-4">
                                 {col.heading}
                               </h4>
                               <ul className="space-y-2">

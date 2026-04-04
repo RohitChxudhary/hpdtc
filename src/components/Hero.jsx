@@ -3,7 +3,7 @@ import { motion, MotionConfig } from "motion/react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import HimachalHero from "./images/_hero_3.webp";
-import HeroCard from "./images/dharamshala.webp";
+import HeroCard from "./images/key_monastry2.jpg";
 
 const LAYOUT_SPRING = { type: "spring", stiffness: 200, damping: 28 };
 
@@ -239,7 +239,8 @@ export default function Hero() {
                       style={{
                         top: "40px",
                         left: "-26px",
-                        background: "rgba(14, 24, 40, 0.56)",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        border: "1px solid rgba(14, 24, 40, 0.45)",
                         backdropFilter: "blur(12px)",
                         borderRadius: "20px",
                         padding: "16px 24px",
@@ -249,19 +250,19 @@ export default function Hero() {
                       }}
                     >
                       <span
-                        className="d-block small text-uppercase mb-1"
+                        className="d-block small text-uppercase mb-1 font-semibold"
                         style={{
-                          color: "rgba(255, 255, 255, 0.7)",
+                          color: "rgb(14, 24, 40)",
                           letterSpacing: "1px",
                         }}
                       >
-                        Highest Peak
+                        THE HIGH DESERT
                       </span>
                       <h3
                         className="h5 mb-0 fw-semibold"
                         style={{ color: "var(--h-saffron)" }}
                       >
-                        Reo Purgyil
+                        Spiti
                       </h3>
                     </motion.div>
 
@@ -273,7 +274,8 @@ export default function Hero() {
                       style={{
                         bottom: "56px",
                         right: "-24px",
-                        background: "rgba(14, 24, 40, 0.76)",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        border: "1px solid rgba(14, 24, 40, 0.45)",
                         backdropFilter: "blur(12px)",
                         borderRadius: "20px",
                         padding: "16px 24px",
@@ -283,9 +285,9 @@ export default function Hero() {
                       }}
                     >
                       <span
-                        className="d-block small text-uppercase mb-1"
+                        className="d-block small text-uppercase mb-1 font-semibold"
                         style={{
-                          color: "rgba(255, 255, 255, 0.6)",
+                          color: "rgb(14, 24, 40)",
                           letterSpacing: "1px",
                         }}
                       >
@@ -295,7 +297,7 @@ export default function Hero() {
                         className="h5 mb-0 fw-semibold"
                         style={{ color: "var(--h-saffron)" }}
                       >
-                        Serene & Untamed
+                        Eternal & Astral
                       </h3>
                     </motion.div>
                   </div>

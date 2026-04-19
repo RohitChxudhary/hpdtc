@@ -49,8 +49,12 @@ const places = [
 
 export default function PlacesToGo() {
   return (
-    <section className="py-5">
-      <Container className="py-5">
+    <section className="py-4 py-md-5">
+      <style>{`
+        .place-card { min-height: 180px; }
+        @media (min-width: 768px) { .place-card { min-height: 250px; } }
+      `}</style>
+      <Container className="py-4 py-md-5">
         <div className="d-flex justify-content-between align-items-end mb-5">
           <div>
             <h2 className="display-4 font-serif fw-bold text-h-dark mb-3">
@@ -66,16 +70,15 @@ export default function PlacesToGo() {
         </div>
 
         {/* Bento Grid - Simplified for Bootstrap */}
-        <Row className="g-4" style={{ minHeight: '600px' }}>
+        <Row className="g-3 g-md-4" style={{ minHeight: 'auto' }}>
           {places.map((place, index) => (
-            <Col key={place.name} md={place.colSpan === 'col-md-6' ? 6 : 3} className="d-flex flex-column">
+            <Col key={place.name} xs={6} md={place.colSpan === 'col-md-6' ? 6 : 3} className="d-flex flex-column">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="position-relative overflow-hidden rounded-4 cursor-pointer flex-grow-1 group w-100"
-                style={{ minHeight: '250px' }}
+                className="place-card position-relative overflow-hidden rounded-4 cursor-pointer flex-grow-1 group w-100"
               >
                 <img loading="lazy" src={place.image}
                   alt={place.name}
@@ -90,7 +93,7 @@ export default function PlacesToGo() {
                     {place.desc}
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <h3 className="fs-3 font-serif fw-bold mb-0">
+                    <h3 className="fs-5 fs-md-3 font-serif fw-bold mb-0">
                       {place.name}
                     </h3>
                     <div className="rounded-circle bg-white bg-opacity-25 backdrop-blur-sm d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>

@@ -42,8 +42,33 @@ const CATEGORIES = [
 
 export default function HorizontalCategories() {
   return (
-    <section className="py-5 position-relative" style={{ overflow: 'hidden' }}>
+    <section className="py-2 position-relative" style={{ overflow: 'hidden' }}>
       {/* Decorative blobs removed — canvas orbs provide ambient colour depth */}
+      <style>{`
+        .category-card { min-height: 240px; }
+        .category-icon-box { width: 36px; height: 36px; }
+        .category-icon { width: 18px; height: 18px; }
+        .category-title { font-size: 1.1rem; }
+        .category-desc { 
+          font-size: 0.8rem; 
+          line-height: 1.3; 
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        @media (min-width: 768px) {
+          .category-card { min-height: 380px; }
+          .category-icon-box { width: 50px; height: 50px; }
+          .category-icon { width: 24px; height: 24px; }
+          .category-title { font-size: 1.5rem; }
+          .category-desc { 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            -webkit-line-clamp: unset;
+          }
+        }
+      `}</style>
 
       <Container className="py-5 position-relative z-1">
         <div className="text-center mb-5">
@@ -81,7 +106,7 @@ export default function HorizontalCategories() {
           {CATEGORIES.map((cat, idx) => {
             const Icon = cat.icon;
             return (
-              <div className="col-12 col-md-6 col-lg-3" key={cat.id}>
+              <div className="col-6 col-md-6 col-lg-3" key={cat.id}>
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -92,8 +117,8 @@ export default function HorizontalCategories() {
                     ease: "easeOut"
                   }}
                   whileHover="hover"
-                  className="h-100 position-relative rounded-4 overflow-hidden shadow"
-                  style={{ minHeight: '380px', cursor: 'pointer', backgroundColor: '#fff' }}
+                  className="category-card h-100 position-relative rounded-4 overflow-hidden shadow"
+                  style={{ cursor: 'pointer', backgroundColor: '#fff' }}
                 >
                   {/* Image Background Layer */}
                   <motion.div 
@@ -121,22 +146,21 @@ export default function HorizontalCategories() {
                   />
 
                   {/* Content Container Layer */}
-                  <div className="position-absolute w-100 h-100 top-0 start-0 d-flex flex-column justify-content-between p-4 z-1">
+                  <div className="position-absolute w-100 h-100 top-0 start-0 d-flex flex-column justify-content-between p-3 p-md-4 z-1">
                     
                     {/* Top Section */}
                     <div className="d-flex justify-content-between align-items-start">
                       <motion.div 
-                        className="rounded-circle d-flex align-items-center justify-content-center bg-white shadow"
-                        style={{ width: '50px', height: '50px' }}
+                        className="category-icon-box rounded-circle d-flex align-items-center justify-content-center bg-white shadow"
                         variants={{
                           hover: { y: -3, scale: 1.05 }
                         }}
                       >
-                        <Icon size={24} color={cat.color} />
+                        <Icon className="category-icon" color={cat.color} />
                       </motion.div>
 
                       <motion.div 
-                        className="rounded-circle d-flex align-items-center justify-content-center bg-white text-dark shadow-sm"
+                        className="rounded-circle d-none d-md-flex align-items-center justify-content-center bg-white text-dark shadow-sm"
                         style={{ width: '36px', height: '36px', opacity: 0, x: -10 }}
                         variants={{
                           hover: { opacity: 1, x: 0 }
@@ -155,8 +179,8 @@ export default function HorizontalCategories() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <h3 className="fw-bold mb-2 fs-4">{cat.title}</h3>
-                      <p className="mb-0 text-light" style={{ fontSize: '0.95rem', lineHeight: '1.5', opacity: 0.9 }}>
+                      <h3 className="category-title fw-bold mb-1 mb-md-2">{cat.title}</h3>
+                      <p className="category-desc mb-0 text-light" style={{ opacity: 0.9 }}>
                         {cat.description}
                       </p>
                     </motion.div>

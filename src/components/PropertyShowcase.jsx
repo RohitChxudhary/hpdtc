@@ -38,7 +38,7 @@ const properties = [
 
 export default function PropertyShowcase() {
   return (
-    <section className="py-5">
+    <section className="py-2">
       <Container className="py-5">
         <div className="d-flex justify-content-between align-items-end mb-5">
           <div>

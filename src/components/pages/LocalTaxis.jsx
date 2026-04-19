@@ -23,8 +23,6 @@ import {
 } from 'react-icons/fa';
 import { GiMountainRoad } from 'react-icons/gi';
 
-/* ─────────────────────────── DATA ─────────────────────────── */
-
 const services = [
   {
     Icon: MdAirplanemodeActive,

@@ -138,28 +138,25 @@ export default function ItineraryBuilder() {
   };
 
   return (
-    <section className="py-5 text-white position-relative overflow-hidden glass-section-dark">
+    <section className="py-4 py-md-5 text-white position-relative overflow-hidden glass-section-dark">
       <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       
-      <Container className="py-5 position-relative z-1">
-        <Row className="align-items-center gy-5">
+      <Container className="py-2 py-md-5 position-relative z-1">
+        <Row className="align-items-center gy-3">
           
           <Col lg={step === 4 ? 12 : 6}>
             <motion.div animate={{ opacity: step === 4 ? 0 : 1, y: step === 4 ? -20 : 0 }} className={step === 4 ? 'd-none' : ''}>
-              <div className="d-inline-flex align-items-center bg-white bg-opacity-10 px-3 py-2 rounded-pill small fw-semibold mb-4 border border-light border-opacity-25">
-                <Sparkles size={16} className="me-2 text-h-saffron" />
-                AI-Powered Planning
-              </div>
-              <h2 className="display-4 font-serif fw-bold mb-4">
+
+              <h2 className="display-4 font-serif fw-bold mb-1 mb-md-4">
                 Design Your Perfect <br/>Himachal Journey
               </h2>
-              <p className="lead text-white-50 mb-5" style={{ maxWidth: '500px' }}>
+              <p className="lead text-white-50 mb-4 mb-md-5" style={{ maxWidth: '500px' }}>
                 Tell us what you love, and our intelligent builder will craft a personalized itinerary that matches your pace, interests, and budget.
               </p>
               
-              <div className="d-flex flex-column gap-4">
+              <div className="d-flex flex-column gap-3 gap-md-4 my-3 my-md-0">
                 <div className="d-flex align-items-start">
-                  <div className="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center me-3 flex-shrink-0" style={{ width: '48px', height: '48px' }}>
+                  <div className="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center me-3 flex-shrink-0" style={{ width: '40px', height: '40px' }}>
                     <Compass size={24} className="text-h-saffron" />
                   </div>
                   <div>
@@ -168,7 +165,7 @@ export default function ItineraryBuilder() {
                   </div>
                 </div>
                 <div className="d-flex align-items-start">
-                  <div className="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center me-3 flex-shrink-0" style={{ width: '48px', height: '48px' }}>
+                  <div className="rounded-circle bg-white bg-opacity-10 d-flex align-items-center justify-content-center me-3 flex-shrink-0" style={{ width: '40px', height: '40px' }}>
                     <Map size={24} className="text-h-saffron" />
                   </div>
                   <div>

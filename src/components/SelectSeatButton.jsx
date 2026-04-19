@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
 
-/**
- * SelectSeatButton
- * Props:
- *  - disabled (bool)  — renders disabled state
- *  - defaultSelected (bool) — start in selected state
- *  - onToggle (fn)    — callback(isSelected)
- */
 export default function SelectSeatButton({
   disabled = false,
   defaultSelected = false,
@@ -21,7 +14,6 @@ export default function SelectSeatButton({
     onToggle?.(next);
   };
 
-  // Fixed min-width so the button never changes size between states
   const base =
     'inline-flex items-center justify-center gap-1 min-w-[110px] px-3 py-1 text-sm font-semibold rounded-md shadow-sm select-none transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-500';
 

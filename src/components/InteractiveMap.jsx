@@ -28,7 +28,7 @@ export default function InteractiveMap() {
   return (
     <section
       id="interactive-map"
-      className="py-5 position-relative overflow-hidden glass-section-dark"
+      className="py-4 py-md-5 position-relative overflow-hidden glass-section-dark"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -57,14 +57,14 @@ export default function InteractiveMap() {
         }}
       />
 
-      <Container className="py-1 position-relative z-1">
-        <div className="text-center mb-5">
+      <Container className="py-2 py-md-4 position-relative z-1">
+        <div className="text-center mb-3 mb-md-5">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="display-5 fw-bold mb-3 text-white tracking-tight">
+            <h2 className="display-5 fw-bold mb-2 mb-md-3 text-white tracking-tight">
               <span className="text-primary">Smart </span>Route Finder
             </h2>
             <p
@@ -95,7 +95,7 @@ export default function InteractiveMap() {
               <Row className="g-4 align-items-end">
                 <Col lg={5}>
                   <Form.Group>
-                    <Form.Label className="text-white-50 small fw-bold mb-2 d-flex align-items-center">
+                    <Form.Label className="text-white-50 small fw-bold mb-1 mb-md-2 d-flex align-items-center">
                       <MapPin size={14} className="me-2 text-primary" />{" "}
                       STARTING LOCATION
                     </Form.Label>
@@ -104,7 +104,7 @@ export default function InteractiveMap() {
                       placeholder="Enter city or landmark..."
                       value={originInput}
                       onChange={(e) => setOriginInput(e.target.value)}
-                      className="bg-dark border-0 text-white py-3 px-4 rounded-4 custom-input-focus"
+                      className="bg-dark border-0 text-white py-2 py-md-3 px-2 px-md-4 rounded-4 custom-input-focus"
                       style={{
                         border: "1px solid rgba(255,255,255,0.1) !important",
                       }}
@@ -114,7 +114,7 @@ export default function InteractiveMap() {
                 </Col>
                 <Col lg={5}>
                   <Form.Group>
-                    <Form.Label className="text-white-50 small fw-bold mb-2 d-flex align-items-center">
+                    <Form.Label className="text-white-50 small fw-bold mb-1 mb-md-2 d-flex align-items-center">
                       <Navigation size={14} className="me-2 text-info" />{" "}
                       DESTINATION
                     </Form.Label>
@@ -123,7 +123,7 @@ export default function InteractiveMap() {
                       placeholder="Where to?"
                       value={destInput}
                       onChange={(e) => setDestInput(e.target.value)}
-                      className="bg-dark border-0 text-white py-3 px-4 rounded-4 custom-input-focus"
+                      className="bg-dark border-0 text-white py-2 py-md-3 px-2 px-md-4 rounded-4 custom-input-focus"
                       required
                     />
                   </Form.Group>
@@ -132,7 +132,7 @@ export default function InteractiveMap() {
                   <Button
                     variant="primary"
                     type="submit"
-                    className="w-100 py-3 rounded-4 fw-bold shadow-lg transition-hover d-flex align-items-center justify-content-center"
+                    className="w-100 py-2 py-md-3 rounded-4 fw-bold shadow-lg transition-hover d-flex align-items-center justify-content-center"
                   >
                     Find <Search size={18} className="ms-2" />
                   </Button>
@@ -147,9 +147,8 @@ export default function InteractiveMap() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="position-relative w-100 rounded-5 overflow-hidden shadow-2xl border border-dark"
+          className="map-container position-relative w-100 rounded-5 overflow-hidden shadow-2xl border border-dark"
           style={{
-            height: "600px",
             boxShadow: "0 30px 60px -12px rgba(0, 0, 0, 0.7)",
             outline: "1px solid rgba(255,255,255,0.05)",
           }}
@@ -189,6 +188,8 @@ export default function InteractiveMap() {
       </Container>
 
       <style>{`
+        .map-container { height: 400px; }
+        @media (min-width: 768px) { .map-container { height: 600px; } }
         .custom-input-focus:focus {
           background-color: #111827 !important;
           box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;

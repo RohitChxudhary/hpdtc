@@ -7,8 +7,12 @@ import SpitiMonasteryImg from './images/spitiy.webp';
 
 export default function Story() {
   return (
-    <section className="py-5 position-relative overflow-hidden">
-      <Container className="py-5">
+    <section className="py-4 py-md-5 position-relative overflow-hidden">
+      <style>{`
+        .story-collage { height: 350px; margin-top: 2rem; }
+        @media (min-width: 992px) { .story-collage { height: 500px; margin-top: 0; } }
+      `}</style>
+      <Container className="py-3 py-md-5">
         <Row className="align-items-center gy-5">
 
           {/* Text Content */}
@@ -39,7 +43,7 @@ export default function Story() {
 
           {/* Image Collage */}
           <Col lg={6} className="order-1 order-lg-2">
-            <div className="position-relative" style={{ height: '500px' }}>
+            <div className="story-collage position-relative">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

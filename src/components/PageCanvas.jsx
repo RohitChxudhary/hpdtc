@@ -1,22 +1,5 @@
 import React from "react";
 
-/**
- * PageCanvas
- *
- * The unified ambient background system for the landing page.
- * Renders a cool-platinum base with 8 slow-drifting colour orbs
- * distributed down the full page height, plus a fixed grain overlay.
- *
- * All landing-page sections are children of this component and become
- * transparent, floating directly on the canvas surface.
- */
-
-/* ─── Orb definitions ──────────────────────────────────────────────────────
-   Each orb is an absolutely-positioned radial-gradient circle.
-   `top` is relative to the full page height — orbs at 90% are only
-   reached when the user has scrolled near the bottom.
-   animation references CSS keyframes defined in index.css.
-─────────────────────────────────────────────────────────────────────────── */
 const ORBS = [
   // Hero zone — top
   {
@@ -98,16 +81,12 @@ const ORBS = [
   },
 ];
 
-/* ─── SVG grain texture (data URI) ────────────────────────────────────────
-   feTurbulence generates photographic-grain noise, tiling seamlessly.
-─────────────────────────────────────────────────────────────────────────── */
 const GRAIN_URI =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export default function PageCanvas({ children }) {
   return (
     <div className="page-canvas">
-      {/* ── Ambient orb layer ─────────────────────────────────────────── */}
       <div aria-hidden="true" className="page-canvas__orbs">
         {ORBS.map((orb) => (
           <div
@@ -130,7 +109,6 @@ export default function PageCanvas({ children }) {
         ))}
       </div>
 
-      {/* ── Grain texture overlay (fixed — never scrolls) ─────────────── */}
       <div
         aria-hidden="true"
         className="page-canvas__grain"
@@ -139,7 +117,6 @@ export default function PageCanvas({ children }) {
         }}
       />
 
-      {/* ── Page content ──────────────────────────────────────────────── */}
       <div className="page-canvas__content">{children}</div>
     </div>
   );

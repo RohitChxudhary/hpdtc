@@ -189,8 +189,7 @@ function FeaturedCard({ season }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.97 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="position-relative rounded-4 overflow-hidden shadow-lg"
-      style={{ minHeight: "560px" }}
+      className="season-card position-relative rounded-4 overflow-hidden shadow-lg"
     >
       {/* ── Hero image with zoom-in animation ── */}
       <motion.div
@@ -236,7 +235,7 @@ function FeaturedCard({ season }) {
       />
 
       {/* ── Season pill — top-left ── */}
-      <div className="position-absolute top-0 start-0 p-4" style={{ zIndex: 4 }}>
+      <div className="position-absolute top-0 start-0 p-3 p-md-4" style={{ zIndex: 4 }}>
         <motion.span
           initial={{ opacity: 0, x: -14 }}
           animate={{ opacity: 1, x: 0 }}
@@ -256,7 +255,7 @@ function FeaturedCard({ season }) {
       </div>
 
       {/* ── "Best Place to Visit" label — top-right ── */}
-      <div className="position-absolute top-0 end-0 p-4" style={{ zIndex: 4 }}>
+      <div className="position-absolute top-0 end-0 p-3 p-md-4" style={{ zIndex: 4 }}>
         <motion.span
           initial={{ opacity: 0, x: 14 }}
           animate={{ opacity: 1, x: 0 }}
@@ -388,34 +387,37 @@ function FeaturedCard({ season }) {
             pointerEvents: "none",
           }}
         >
-          {/* intentionally empty — warning surfaced via monsoon-specific palette */}
         </motion.div>
       )}
     </motion.div>
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+// Main Component 
 export default function SeasonalGuide() {
   const [activeSeason, setActiveSeason] = useState(getCurrentSeasonId());
   const currentSeasonId = getCurrentSeasonId();
   const activeData = SEASONS.find((s) => s.id === activeSeason);
 
   return (
-    <section className="py-5">
-      <Container className="py-5">
+    <section className="py-4 py-md-5">
+      <style>{`
+        .season-card { min-height: 440px; }
+        @media (min-width: 768px) { .season-card { min-height: 560px; } }
+      `}</style>
+      <Container className="py-3 py-md-5">
         <Row className="align-items-start gy-5">
 
-          {/* ── Left Navigation (unchanged) ─────────────────────────── */}
+          {/* Left Navigation */}
           <Col lg={4}>
-            <div className="mb-5">
+            <div className="mb-3">
               <span
-                className="text-h-saffron fw-semibold text-uppercase small d-block mb-2"
+                className="text-h-saffron fw-semibold text-uppercase small d-block mb-1"
                 style={{ letterSpacing: "0.1em" }}
               >
                 Year-Round Guide
               </span>
-              <h2 className="display-5 font-serif fw-bold text-h-dark mb-3">
+              <h2 className="display-5 font-serif fw-bold text-h-dark mb-2">
                 Nature's Four Acts
               </h2>
               <p className="text-dark" style={{ lineHeight: 1.7 }}>
@@ -437,7 +439,7 @@ export default function SeasonalGuide() {
             </div>
           </Col>
 
-          {/* ── Right Display Card ───────────────────────────────────── */}
+          {/* Right Display Card */}
           <Col lg={8} className="position-relative">
             <AnimatePresence mode="wait">
               {activeData && (

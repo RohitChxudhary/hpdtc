@@ -12,10 +12,15 @@ export default function Hero() {
 
   return (
     <MotionConfig transition={LAYOUT_SPRING}>
-      <div className="position-relative vh-110 w-100 overflow-hidden d-flex">
+      <div className="position-relative min-h-[75vh] md:min-h-screen w-100 overflow-hidden d-flex">
         <div
           className="position-absolute top-0 start-0 w-100 h-100 overflow-hidden"
-          style={{ zIndex: 0 }}
+          style={{
+            zIndex: 0,
+            // This creates the transparency fade
+            // WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 85%,transparent 90%)",
+            // maskImage: "linear-gradient(to bottom, black 0%, black 85%,transparent 90%)",
+          }}
         >
           <motion.img
             loading="lazy"
@@ -45,21 +50,16 @@ export default function Hero() {
             .hero-safe-zone {
               padding-top: 120px;
               padding-bottom: 60px;
-              min-height: 100vh;
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-start;
               position: relative;
               z-index: 10;
               max-width: 1320px;
               pointer-events: none;
-              text-align: left;
             }
             .hero-grid-layout {
               display: grid;
               grid-template-columns: 1fr;
               gap: 40px;
-              align-items: start;
+              align-items: center;
               width: 100%;
             }
             @media (min-width: 992px) {
@@ -69,14 +69,15 @@ export default function Hero() {
               .hero-grid-layout {
                 grid-template-columns: 1.1fr 0.9fr;
                 gap: 50px;
+                align-items: start;
               }
             }
           `}
         </style>
-        <Container className="hero-safe-zone">
+        <Container className="hero-safe-zone flex flex-col justify-center md:justify-start flex-grow-1">
           <div className="hero-grid-layout">
             {/* LEFT COLUMN (Copy & Actions) */}
-            <div className="pointer-events-auto">
+            <div className="pointer-events-auto flex flex-col items-center justify-center text-center md:items-start md:text-left">
               <motion.span
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -133,7 +134,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="d-flex gap-3 gap-md-4 flex-column flex-sm-row mb-5"
+                className="d-flex gap-3 gap-md-4 flex-column flex-sm-row mb-3 items-center justify-center md:items-start md:justify-start"
               >
                 <motion.button
                   onClick={() =>
@@ -147,7 +148,7 @@ export default function Hero() {
                     boxShadow: "0 0 25px rgba(226, 196, 140, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="rounded-pill fw-bold border-0 position-relative overflow-hidden"
+                  className="rounded-pill fw-bold border-0 position-relative overflow-hidden w-full max-w-[280px] sm:w-auto"
                   style={{
                     padding: "16px 36px",
                     fontSize: "1.1rem",
@@ -174,7 +175,7 @@ export default function Hero() {
                     backgroundColor: "rgba(255, 255, 255, 0.15)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="rounded-pill fw-bold text-white position-relative"
+                  className="rounded-pill fw-bold text-white position-relative w-full max-w-[280px] sm:w-auto"
                   style={{
                     padding: "16px 36px",
                     fontSize: "1.1rem",
@@ -195,8 +196,7 @@ export default function Hero() {
             {/* RIGHT COLUMN (Visuals & Floating Cards) */}
             <div className="pointer-events-auto position-relative d-flex flex-column align-items-center w-100">
               <div
-                className="position-relative w-100 d-flex justify-content-center align-items-start"
-                style={{ minHeight: "480px" }}
+                className="position-relative w-100 d-flex justify-content-center align-items-start min-h-0 md:min-h-[480px]"
               >
                 <motion.div
                   animate={{ y: [-10, 10, -10] }}
@@ -205,7 +205,7 @@ export default function Hero() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="position-relative w-100"
+                  className="position-relative w-100 hidden md:block"
                   style={{
                     maxWidth: "380px",
                     aspectRatio: "4/5",
@@ -306,78 +306,23 @@ export default function Hero() {
 
               {/* Mobile Static Cards */}
               <div
-                className="d-flex d-lg-none flex-column flex-sm-row gap-3 w-100 mt-4 px-2"
+                className="d-flex d-lg-none flex-column flex-sm-row gap-3 w-100 mt-4 px-2  d-none d-sm-block"
                 style={{ maxWidth: "470px" }}
-              >
-                <div
-                  className="flex-grow-1"
-                  style={{
-                    background: "rgba(14, 24, 40, 0.76)",
-                    backdropFilter: "blur(12px)",
-                    borderRadius: "20px",
-                    padding: "16px 24px",
-                    boxShadow: "var(--shadow-deep)",
-                    height: "max-content",
-                  }}
-                >
-                  <span
-                    className="d-block small text-uppercase mb-1"
-                    style={{
-                      color: "rgba(255, 255, 255, 0.6)",
-                      letterSpacing: "1px",
-                    }}
-                  >
-                    Highest Peak
-                  </span>
-                  <h3
-                    className="h5 mb-0 fw-semibold"
-                    style={{ color: "var(--h-saffron)" }}
-                  >
-                    Reo Purgyil
-                  </h3>
-                </div>
-                <div
-                  className="flex-grow-1"
-                  style={{
-                    background: "rgba(14, 24, 40, 0.76)",
-                    backdropFilter: "blur(12px)",
-                    borderRadius: "20px",
-                    padding: "16px 24px",
-                    boxShadow: "var(--shadow-deep)",
-                    height: "max-content",
-                  }}
-                >
-                  <span
-                    className="d-block small text-uppercase mb-1"
-                    style={{
-                      color: "rgba(255, 255, 255, 0.6)",
-                      letterSpacing: "1px",
-                    }}
-                  >
-                    Vibe
-                  </span>
-                  <h3
-                    className="h5 mb-0 fw-semibold"
-                    style={{ color: "var(-h-saffron)" }}
-                  >
-                    Serene & Untamed
-                  </h3>
-                </div>
-              </div>
+              />
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 w-full leading-[0] z-20">
-  <svg 
-    viewBox="0 0 1440 320" 
-    preserveAspectRatio="none" 
-    className="relative block w-full h-[120px] lg:h-[180px]"
-    fill="#f0ead2" /* Match your section background exactly */
-  >
-    <path 
-      d="M0,220 C480,100 960,400 1440,220 L1440,320 L0,320 Z"
-    ></path>
-  </svg>
-</div>
+          <div className="absolute bottom-0 left-0 w-full leading-[0] z-20 d-none d-sm-block">
+            <svg 
+              viewBox="0 0 1440 320" 
+              preserveAspectRatio="none" 
+              className="relative block w-full h-[120px] lg:h-[180px]"
+              fill="#f0ead2" 
+            >
+              <path 
+                d="M0,220 C480,100 960,400 1440,220 L1440,320 L0,320 Z"
+              ></path>
+            </svg>
+          </div>
         </Container>
       </div>
     </MotionConfig>
